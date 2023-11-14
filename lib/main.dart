@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/ui/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pharmate_farmacia/widgets/nav_rail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,37 +19,9 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: lightColorScheme,
           textTheme: GoogleFonts.interTightTextTheme()),
-      home: const MyHomePage(title: 'Pharmate'),
+      home: const NavRail(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-        // leading: ImageIcon(), #TODO: Insert Pharmate's logo
-        ),
-      //TODO: Add Navigation Rail
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          ],
-        ),
-      ),
-    );
-  }
-}
