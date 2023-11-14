@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/widgets/custom_icon.dart';
 
 class NavRail extends StatefulWidget {
   const NavRail({super.key});
@@ -9,11 +10,14 @@ class NavRail extends StatefulWidget {
 
 class _NavRailState extends State<NavRail> {
   int currentPageIndex = 1; //Start page is Ordini
+
   changeDestination(int index){
     setState(() {
       currentPageIndex = index;
     });
   }
+
+  final navScreens = [Placeholder(),Placeholder(),Placeholder()];
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
@@ -43,9 +47,11 @@ class _NavRailState extends State<NavRail> {
                 ),
         ], 
         selectedIndex: currentPageIndex,
-        leading: const Padding(padding: EdgeInsets.only(top: 10,bottom: 30),child: Icon(Icons.local_pharmacy)) //TODO:Use Pharmate logo as leading
+        leading: const Padding(padding: EdgeInsets.only(top: 10,bottom: 40),child: CustomIcon(icon: "assets/logo_no_background.png",)) //TODO:Use Pharmate logo as leading
         ), 
-        ]
+        const VerticalDivider(thickness: 1,width: 1,),
+        Expanded(child: navScreens[currentPageIndex],),
+        ],
     )
     );
   }
