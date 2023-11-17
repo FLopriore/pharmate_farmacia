@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/widgets/custom_icon.dart';
+import 'package:pharmate_farmacia/screens/orders_page.dart';
 
 class NavRail extends StatefulWidget {
   const NavRail({super.key});
@@ -17,7 +18,7 @@ class _NavRailState extends State<NavRail> {
     });
   }
 
-  final navScreens = [Placeholder(),Placeholder(),Placeholder()];
+  final navScreens = [OrdersPage(),Placeholder(),Placeholder()];
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
