@@ -22,13 +22,6 @@ class OrdersPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child:Text(
-              "Controlla e gestisci gli ordini della tua Farmacia",
-              style: TextStyle(fontWeight: FontWeight.normal,fontStyle: FontStyle.italic,fontSize: 25,color:Colors.black),
-            ),
-            ),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 30),

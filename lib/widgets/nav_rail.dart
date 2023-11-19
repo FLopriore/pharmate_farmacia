@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/screens/warehouse_page.dart';
 import 'package:pharmate_farmacia/widgets/custom_icon.dart';
 import 'package:pharmate_farmacia/screens/orders_page.dart';
 
@@ -10,7 +11,7 @@ class NavRail extends StatefulWidget {
 }
 
 class _NavRailState extends State<NavRail> {
-  int currentPageIndex = 1; //Start page is Ordini
+  int currentPageIndex = 0; //Start page is Ordini
 
   changeDestination(int index){
     setState(() {
@@ -18,7 +19,7 @@ class _NavRailState extends State<NavRail> {
     });
   }
 
-  final navScreens = [OrdersPage(),Placeholder(),Placeholder()];
+  final navScreens = [const OrdersPage(),const WarehousePage(),Placeholder()];
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
