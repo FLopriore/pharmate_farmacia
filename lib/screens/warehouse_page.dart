@@ -34,11 +34,11 @@ class WarehousePage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff0888fd),
                     foregroundColor: Colors.white,
-                    fixedSize: Size.fromHeight(50),
+                    fixedSize: Size.fromHeight(45),
                   ),
                   onPressed: null, 
                   icon:const Icon(Icons.search), 
-                  label: const Text("Cerca ")),), //TODO: Filter the drugs using a query
+                  label: const Text("Cerca ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),), //TODO: Filter the drugs using a query
               const SizedBox(width: 10,),
               Directionality(
                 textDirection: TextDirection.rtl, 
@@ -46,11 +46,11 @@ class WarehousePage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff0888fd),
                     foregroundColor: Colors.white,
-                    fixedSize: Size.fromHeight(50),
+                    fixedSize: Size.fromHeight(45),
                   ),
                   onPressed: null,
                   icon:const Icon(Icons.add), 
-                  label: const Text("Aggiungi Giacenza ")),), //TODO: Pop up to insert a new drug to warehouse
+                  label: const Text("Aggiungi Giacenza ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),), //TODO: Pop up to insert a new drug to warehouse
             ],
           ),
         ), 
