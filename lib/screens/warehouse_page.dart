@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/widgets/add_stock.dart';
 import 'package:pharmate_farmacia/widgets/rounded_background_rectangle.dart';
 import 'package:pharmate_farmacia/widgets/custom_search_bar.dart';
 
@@ -27,7 +28,7 @@ class WarehousePage extends StatelessWidget {
           alignment: Alignment.center,
           child: Row(
             children: [
-              const SizedBox(height:50,child:CustomSearchBar(),),
+              const Expanded(child: SizedBox(height: 50,child: CustomSearchBar(),),),
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: ElevatedButton.icon(
@@ -36,9 +37,9 @@ class WarehousePage extends StatelessWidget {
                     foregroundColor: Colors.white,
                     fixedSize: Size.fromHeight(45),
                   ),
-                  onPressed: null, 
+                  onPressed: (){}, 
                   icon:const Icon(Icons.search), 
-                  label: const Text("Cerca ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),), //TODO: Filter the drugs using a query
+                  label: const Text("Cerca ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),), //TODO: Filter the drugs using a query
               const SizedBox(width: 10,),
               Directionality(
                 textDirection: TextDirection.rtl, 
@@ -48,13 +49,14 @@ class WarehousePage extends StatelessWidget {
                     foregroundColor: Colors.white,
                     fixedSize: Size.fromHeight(45),
                   ),
-                  onPressed: null,
+                  onPressed: () => showDialog(context: context, builder: (BuildContext context) => DialogAddStock()),
                   icon:const Icon(Icons.add), 
-                  label: const Text("Aggiungi Giacenza ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),), //TODO: Pop up to insert a new drug to warehouse
+                  label: const Text("Aggiungi Giacenza ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),), //TODO: Pop up to insert a new drug to warehouse
+              const SizedBox(width: 20,)
             ],
           ),
         ), 
-        const Expanded(child:Padding(padding: EdgeInsets.symmetric(vertical: 20),child: RoundedBackgroundRectangle(child: Placeholder()),)) 
+         const Expanded(child:Padding(padding: EdgeInsets.symmetric(vertical: 20),child: RoundedBackgroundRectangle(child: Placeholder()),))
         ]
       ),
     );
