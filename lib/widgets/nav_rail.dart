@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/screens/profile_page.dart';
 import 'package:pharmate_farmacia/screens/warehouse_page.dart';
 import 'package:pharmate_farmacia/widgets/custom_icon.dart';
 import 'package:pharmate_farmacia/screens/orders_page.dart';
@@ -19,7 +20,7 @@ class _NavRailState extends State<NavRail> {
     });
   }
 
-  final navScreens = [const OrdersPage(),const WarehousePage(),Placeholder()];
+  final navScreens = [const OrdersPage(),const WarehousePage(),const ProfilePage()];
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(

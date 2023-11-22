@@ -19,10 +19,10 @@ class _DialogAddStockState extends State<DialogAddStock> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text("Farmaco",style: TextStyle(fontWeight: FontWeight.bold),),
-          TextField(decoration: const InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(),fillColor: Colors.white,filled: true,),inputFormatters: [FilteringTextInputFormatter.digitsOnly,]),
+          TextField(decoration: const InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true,),inputFormatters: [FilteringTextInputFormatter.digitsOnly,]),
           const SizedBox(height: 10,),
           const Text("Quantità",style: TextStyle(fontWeight: FontWeight.bold),),
-          TextField(decoration: const InputDecoration(hintText: "Qtà",border: OutlineInputBorder(),fillColor: Colors.white,filled: true),inputFormatters: [FilteringTextInputFormatter.digitsOnly,],),
+          TextField(decoration: const InputDecoration(hintText: "Qtà",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true),inputFormatters: [FilteringTextInputFormatter.digitsOnly,],),
         ],),
       actions: [
         TextButton(
