@@ -7,8 +7,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Align(alignment: Alignment.center,child: 
-      Column(children: [
+      body:Align(alignment:Alignment.center,
+      child:Column(
+        children: [
               const SizedBox(height: 20),
               const Text(
               "Farmacia del Cambio",
@@ -48,7 +49,7 @@ class ProfilePage extends StatelessWidget {
                   icon:const Icon(Icons.add), 
                   label: const Text("Logout ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),),
       ],
-      ),
-      ),);
+      ),),);
+    
   }
 }
