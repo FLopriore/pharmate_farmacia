@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DialogAddStock extends StatefulWidget {
   const DialogAddStock({super.key});
@@ -12,16 +13,16 @@ class _DialogAddStockState extends State<DialogAddStock> {
   Widget build(BuildContext context){
     return AlertDialog(
       title: const Text("Aggiungi Giacenza",style: TextStyle(fontWeight: FontWeight.w800),),
-      content:const Column(
+      content:Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
           //position
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Farmaco",style: TextStyle(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),),
-          TextField(decoration: InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(),fillColor: Colors.white,filled: true,),),
-          SizedBox(height: 10,),
-          Text("Quantità",style: TextStyle(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),),
-          TextField(decoration: InputDecoration(hintText: "Qtà",border: OutlineInputBorder(),fillColor: Colors.white,filled: true),),
+          const Text("Farmaco",style: TextStyle(fontWeight: FontWeight.bold),),
+          TextField(decoration: const InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(),fillColor: Colors.white,filled: true,),inputFormatters: [FilteringTextInputFormatter.digitsOnly,]),
+          const SizedBox(height: 10,),
+          const Text("Quantità",style: TextStyle(fontWeight: FontWeight.bold),),
+          TextField(decoration: const InputDecoration(hintText: "Qtà",border: OutlineInputBorder(),fillColor: Colors.white,filled: true),inputFormatters: [FilteringTextInputFormatter.digitsOnly,],),
         ],),
       actions: [
         TextButton(
