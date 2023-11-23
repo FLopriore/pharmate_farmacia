@@ -10,8 +10,8 @@ class ProfileEntry extends StatelessWidget {
     return Row( 
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(textParam,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.center,),
-        Text(textEntry,style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),),
+        Padding(padding:const EdgeInsets.only(right: 10) ,child:Text(textParam,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),),
+        Text(textEntry,style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.end,),
       ],
     );
   }
