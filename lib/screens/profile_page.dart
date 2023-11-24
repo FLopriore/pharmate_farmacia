@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
                     foregroundColor: const Color(0xff0888fd),
                     fixedSize: Size.fromHeight(45),
                   ),
-                  onPressed: () {},
+                  onPressed: () { Navigator.pop(context);},
                   icon:const Icon(Icons.logout), 
                   label: const Text("Logout ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20),)),),
       ],

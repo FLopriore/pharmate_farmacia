@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
             );
                   }, 
                   icon:const Icon(Icons.login), 
-                  label: const Text("Cerca ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),),
+                  label: const Text("Login ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),),
             )
       ],
       )
