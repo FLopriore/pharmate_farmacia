@@ -12,16 +12,16 @@ class _DialogAddStockState extends State<DialogAddStock> {
   @override
   Widget build(BuildContext context){
     return AlertDialog(
-      title: const Text("Aggiungi Giacenza",style: TextStyle(fontWeight: FontWeight.w800),),
+      title: const Text("Aggiungi Giacenza",style: TextStyle(fontWeight: FontWeight.w800,fontSize: 30),),
       content:Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
           //position
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("Farmaco",style: TextStyle(fontWeight: FontWeight.bold),),
+          const Text("Farmaco",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
           TextField(decoration: const InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true,),inputFormatters: [FilteringTextInputFormatter.digitsOnly,]),
-          const SizedBox(height: 10,),
-          const Text("Quantità",style: TextStyle(fontWeight: FontWeight.bold),),
+          const SizedBox(height: 15,),
+          const Text("Quantità",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
           TextField(decoration: const InputDecoration(hintText: "Qtà",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true),inputFormatters: [FilteringTextInputFormatter.digitsOnly,],),
         ],),
       actions: [
@@ -30,7 +30,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff0888fd),
             foregroundColor: Colors.white,
-            fixedSize: Size.fromHeight(45),
+            fixedSize: Size.fromHeight(55),
           ),
           child: const Text("Aggiungi"),), //TODO: Add to db the drugs
         TextButton(
@@ -38,7 +38,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xffCAE6FF),
             foregroundColor: const Color(0xff0888fd),
-            fixedSize: Size.fromHeight(45),
+            fixedSize: Size.fromHeight(55),
           ),
           child: const Text("Annulla"),), 
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmate_farmacia/widgets/profile_entry.dart';
+import 'package:pharmate_farmacia/widgets/change_password.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -21,19 +21,7 @@ class ProfilePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
               const SizedBox(height: 50,),
-              /*
-              const ProfileEntry(textParam: "Città: ", textEntry: 'Bari'),
-              const ProfileEntry(textParam: "Via: ", textEntry: 'Via Marco Polo'),
-              const ProfileEntry(textParam: "Partita IVA: ", textEntry: 'N0NCH0S0RD1'),*/
-
-              /*
-                  Text('Città: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('Bari',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
-                  Text('Via: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('Via Marco Polo',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
-                  Text('Partita IVA: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('N0NCH0S0RD1',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,), */
-              SizedBox(width: 400, height: 250,
+              SizedBox(width: 500, height: 250,
               child:GridView.count(
                   shrinkWrap: true,
                   primary: false,
@@ -42,12 +30,12 @@ class ProfilePage extends StatelessWidget {
                   childAspectRatio: 5,
                   crossAxisCount: 2,
                   children: <Widget>[
-                  Text('Città: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('Bari',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
-                  Text('Via: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('Via Marco Polo',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
-                  Text('Partita IVA: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
-                  Text('N0NCH0S0RD1',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,), 
+                  Text('Città: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 30),textAlign: TextAlign.end,),
+                  Text('Bari',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 30),textAlign: TextAlign.start,),
+                  Text('Via: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 30),textAlign: TextAlign.end,),
+                  Text('Via Marco Polo',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 30),textAlign: TextAlign.start,),
+                  Text('Partita IVA: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 30),textAlign: TextAlign.end,),
+                  Text('N0NCH0S0RD1',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 30),textAlign: TextAlign.start,), 
                   ],
                 ),),
               const SizedBox(height: 50,),
@@ -59,9 +47,9 @@ class ProfilePage extends StatelessWidget {
                     foregroundColor: Colors.white,
                     fixedSize: Size.fromHeight(45),
                   ),
-                  onPressed: (){}, 
+                  onPressed: () => showDialog(context: context, builder: (BuildContext context) => ChangePass()), 
                   icon:const Icon(Icons.lock), 
-                  label: const Text("Cambia Password ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),), //TODO: Change Password PopUp
+                  label: const Text("Cambia Password ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20),)),), //TODO: Change Password PopUp
               const SizedBox(height: 10,),
               Directionality(
                 textDirection: TextDirection.rtl, 
@@ -72,8 +60,8 @@ class ProfilePage extends StatelessWidget {
                     fixedSize: Size.fromHeight(45),
                   ),
                   onPressed: () {},
-                  icon:const Icon(Icons.add), 
-                  label: const Text("Logout ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 15),)),),
+                  icon:const Icon(Icons.logout), 
+                  label: const Text("Logout ",style: TextStyle(fontWeight: FontWeight.normal,fontSize: 20),)),),
       ],
       ),),);
     
