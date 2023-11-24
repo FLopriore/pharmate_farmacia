@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/screens/login_page.dart';
 import 'package:pharmate_farmacia/ui/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pharmate_farmacia/widgets/nav_rail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: lightColorScheme,
           textTheme: GoogleFonts.interTightTextTheme()),
-      home: const NavRail(),
+      home: const LoginPage(),
     );
   }
 }
