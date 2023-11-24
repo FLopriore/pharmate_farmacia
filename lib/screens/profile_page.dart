@@ -21,9 +21,35 @@ class ProfilePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
               const SizedBox(height: 50,),
+              /*
               const ProfileEntry(textParam: "Città: ", textEntry: 'Bari'),
               const ProfileEntry(textParam: "Via: ", textEntry: 'Via Marco Polo'),
-              const ProfileEntry(textParam: "Partita IVA: ", textEntry: 'N0NCH0S0RD1'),
+              const ProfileEntry(textParam: "Partita IVA: ", textEntry: 'N0NCH0S0RD1'),*/
+
+              /*
+                  Text('Città: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('Bari',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
+                  Text('Via: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('Via Marco Polo',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
+                  Text('Partita IVA: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('N0NCH0S0RD1',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,), */
+              SizedBox(width: 400, height: 250,
+              child:GridView.count(
+                  shrinkWrap: true,
+                  primary: false,
+                  crossAxisSpacing: 30,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 5,
+                  crossAxisCount: 2,
+                  children: <Widget>[
+                  Text('Città: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('Bari',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
+                  Text('Via: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('Via Marco Polo',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,),
+                  Text('Partita IVA: ',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),textAlign: TextAlign.end,),
+                  Text('N0NCH0S0RD1',style: const TextStyle(fontWeight: FontWeight.normal,fontSize: 25),textAlign: TextAlign.start,), 
+                  ],
+                ),),
               const SizedBox(height: 50,),
               Directionality(
                 textDirection: TextDirection.rtl,
