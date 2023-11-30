@@ -28,7 +28,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
         TextButton(
           onPressed: (){}, 
           style: TextButton.styleFrom(
-            backgroundColor: const Color(0xff0888fd),
+            backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
             fixedSize: Size.fromHeight(55),
           ),
@@ -37,7 +37,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
           onPressed: (){Navigator.pop(context);}, 
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xffCAE6FF),
-            foregroundColor: const Color(0xff0888fd),
+            foregroundColor: const Color(0xff023D74),
             fixedSize: Size.fromHeight(55),
           ),
           child: const Text("Annulla"),), 

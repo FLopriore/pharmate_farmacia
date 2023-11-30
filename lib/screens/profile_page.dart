@@ -43,7 +43,7 @@ class ProfilePage extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff0888fd),
+                    backgroundColor: const Color(0xff023D74),
                     foregroundColor: Colors.white,
                     fixedSize: Size.fromHeight(45),
                   ),
@@ -56,7 +56,7 @@ class ProfilePage extends StatelessWidget {
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffCAE6FF),
-                    foregroundColor: const Color(0xff0888fd),
+                    foregroundColor: const Color(0xff023D74),
                     fixedSize: Size.fromHeight(45),
                   ),
                   onPressed: () { Navigator.pop(context);},
