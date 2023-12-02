@@ -78,6 +78,10 @@ class _DialogAddStockState extends State<DialogAddStock> {
               // TODO: add pharmacy code
             };
             await CallApi().postData(data, 'magazzino');
+            setState(() {
+              medicineCodeController.text = "";
+              quantityController.text = "";
+            });
           },
           child: const Text("Aggiungi"),
         ),
