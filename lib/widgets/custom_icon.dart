@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CustomIcon extends StatelessWidget {
   final String icon;
   final double height;

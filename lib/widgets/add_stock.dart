@@ -7,40 +7,78 @@ class DialogAddStock extends StatefulWidget {
   @override
   State<DialogAddStock> createState() => _DialogAddStockState();
 }
-class _DialogAddStockState extends State<DialogAddStock> {
 
+class _DialogAddStockState extends State<DialogAddStock> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Aggiungi Giacenza",style: TextStyle(fontWeight: FontWeight.w800,fontSize: 30),),
-      content:Column(
+      title: const Text(
+        "Aggiungi Giacenza",
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+      ),
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-          //position
+        //position
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("Farmaco",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-          TextField(decoration: const InputDecoration(hintText: "Inserisci il codice del Farmaco",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true,),inputFormatters: [FilteringTextInputFormatter.digitsOnly,]),
-          const SizedBox(height: 15,),
-          const Text("Quantità",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-          TextField(decoration: const InputDecoration(hintText: "Qtà",border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.all(Radius.circular(40))),fillColor: Colors.white,filled: true),inputFormatters: [FilteringTextInputFormatter.digitsOnly,],),
-        ],),
+          const Text(
+            "Farmaco",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          TextField(
+              decoration: const InputDecoration(
+                hintText: "Inserisci il codice del Farmaco",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(Radius.circular(40))),
+                fillColor: Colors.white,
+                filled: true,
+              ),
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+              ]),
+          const SizedBox(
+            height: 15,
+          ),
+          const Text(
+            "Quantità",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          TextField(
+            decoration: const InputDecoration(
+                hintText: "Qtà",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(Radius.circular(40))),
+                fillColor: Colors.white,
+                filled: true),
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+            ],
+          ),
+        ],
+      ),
       actions: [
         TextButton(
-          onPressed: (){}, 
+          onPressed: () {},
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
-            fixedSize: Size.fromHeight(55),
+            fixedSize: const Size.fromHeight(55),
           ),
-          child: const Text("Aggiungi"),), //TODO: Add to db the drugs
+          child: const Text("Aggiungi"),
+        ), //TODO: Add to db the drugs
         TextButton(
-          onPressed: (){Navigator.pop(context);}, 
+          onPressed: () {
+            Navigator.pop(context);
+          },
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xffCAE6FF),
             foregroundColor: const Color(0xff023D74),
-            fixedSize: Size.fromHeight(55),
+            fixedSize: const Size.fromHeight(55),
           ),
-          child: const Text("Annulla"),), 
+          child: const Text("Annulla"),
+        ),
       ],
     );
   }

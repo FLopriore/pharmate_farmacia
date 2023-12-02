@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pharmate Farmacia',
-      theme:ThemeData(
+      theme: ThemeData(
           useMaterial3: true,
           colorScheme: lightColorScheme,
           textTheme: GoogleFonts.interTightTextTheme()),
@@ -23,5 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
