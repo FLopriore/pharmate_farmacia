@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pharmate_farmacia/data/api.dart';
 
 class DialogAddStock extends StatefulWidget {
   const DialogAddStock({super.key});
@@ -9,6 +10,9 @@ class DialogAddStock extends StatefulWidget {
 }
 
 class _DialogAddStockState extends State<DialogAddStock> {
+  TextEditingController medicineCodeController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -26,6 +30,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           TextField(
+            controller: medicineCodeController,
               decoration: const InputDecoration(
                 hintText: "Inserisci il codice del Farmaco",
                 border: OutlineInputBorder(
@@ -45,6 +50,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           TextField(
+            controller: quantityController,
             decoration: const InputDecoration(
                 hintText: "Qtà",
                 border: OutlineInputBorder(
@@ -60,14 +66,21 @@ class _DialogAddStockState extends State<DialogAddStock> {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
             fixedSize: const Size.fromHeight(55),
           ),
+          onPressed: () async {
+            var data = {
+              'codiceProdotto': medicineCodeController.text,
+              'qta': quantityController.text,
+              // TODO: add pharmacy code
+            };
+            await CallApi().postData(data, 'magazzino');
+          },
           child: const Text("Aggiungi"),
-        ), //TODO: Add to db the drugs
+        ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);
