@@ -73,9 +73,9 @@ class _DialogAddStockState extends State<DialogAddStock> {
 
   Future<void> _addItemToStock() async {
     var data = {
-      'codiceProdotto': medicineCodeController.text,
-      'qta': quantityController.text,
-      // TODO: add pharmacy code
+      'codeItem': medicineCodeController.text,
+      'qta': int.parse(quantityController.text),
+      // TODO: add pharmacy code and medicine name
     };
     await CallApi().postData(data, 'magazzino');
     setState(() {
