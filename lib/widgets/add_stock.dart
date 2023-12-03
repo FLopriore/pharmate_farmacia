@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pharmate_farmacia/data/api.dart';
+import 'package:pharmate_farmacia/widgets/add_stock_text_field.dart';
 
 class DialogAddStock extends StatefulWidget {
   const DialogAddStock({super.key});
@@ -29,38 +29,18 @@ class _DialogAddStockState extends State<DialogAddStock> {
             "Farmaco",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          TextField(
+          AddStockTextField(
             controller: medicineCodeController,
-              decoration: const InputDecoration(
-                hintText: "Inserisci il codice del Farmaco",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(40))),
-                fillColor: Colors.white,
-                filled: true,
-              ),
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ]),
-          const SizedBox(
-            height: 15,
+            hint: "Inserisci il codice del Farmaco",
           ),
+          const SizedBox(height: 15),
           const Text(
             "Quantità",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          TextField(
+          AddStockTextField(
             controller: quantityController,
-            decoration: const InputDecoration(
-                hintText: "Qtà",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(40))),
-                fillColor: Colors.white,
-                filled: true),
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-            ],
+            hint: "Qtà",
           ),
         ],
       ),
@@ -71,17 +51,8 @@ class _DialogAddStockState extends State<DialogAddStock> {
             foregroundColor: Colors.white,
             fixedSize: const Size.fromHeight(55),
           ),
-          onPressed: () async {
-            var data = {
-              'codiceProdotto': medicineCodeController.text,
-              'qta': quantityController.text,
-              // TODO: add pharmacy code
-            };
-            await CallApi().postData(data, 'magazzino');
-            setState(() {
-              medicineCodeController.text = "";
-              quantityController.text = "";
-            });
+          onPressed: () {
+            _addItemToStock();
           },
           child: const Text("Aggiungi"),
         ),
@@ -98,5 +69,18 @@ class _DialogAddStockState extends State<DialogAddStock> {
         ),
       ],
     );
+  }
+
+  Future<void> _addItemToStock() async {
+    var data = {
+      'codiceProdotto': medicineCodeController.text,
+      'qta': quantityController.text,
+      // TODO: add pharmacy code
+    };
+    await CallApi().postData(data, 'magazzino');
+    setState(() {
+      medicineCodeController.text = "";
+      quantityController.text = "";
+    });
   }
 }
