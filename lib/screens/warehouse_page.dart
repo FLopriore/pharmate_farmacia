@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/widgets/add_stock.dart';
-import 'package:pharmate_farmacia/widgets/rounded_background_rectangle.dart';
 import 'package:pharmate_farmacia/widgets/custom_search_bar.dart';
+import 'package:pharmate_farmacia/widgets/rounded_background_rectangle.dart';
+import 'package:pharmate_farmacia/widgets/warehouse_items_data_table.dart';
 
 class WarehousePage extends StatelessWidget {
   const WarehousePage({super.key});
@@ -68,8 +69,8 @@ class WarehousePage extends StatelessWidget {
         ),
         const Expanded(
             child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
-          child: RoundedBackgroundRectangle(child: Placeholder()),
+              padding: EdgeInsets.symmetric(vertical: 20),
+          child: RoundedBackgroundRectangle(child: WarehouseItemsDataTable()),
         ))
       ]),
     );
