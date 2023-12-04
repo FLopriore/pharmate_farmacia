@@ -5,62 +5,68 @@
   },
   "images": [
     {
-      "size": "16x16",
+      "idiom": "ios-marketing",
+      "size": "1024x1024",
+      "scale": "1x",
+      "filename": "appstore1024.png"
+    },
+    {
       "idiom": "mac",
+      "size": "16x16",
       "scale": "1x",
       "filename": "mac16.png"
     },
     {
-      "size": "16x16",
       "idiom": "mac",
+      "size": "16x16",
       "scale": "2x",
       "filename": "mac32.png"
     },
     {
-      "size": "32x32",
       "idiom": "mac",
+      "size": "32x32",
       "scale": "1x",
       "filename": "mac32.png"
     },
     {
-      "size": "32x32",
       "idiom": "mac",
+      "size": "32x32",
       "scale": "2x",
       "filename": "mac64.png"
     },
     {
-      "size": "128x128",
       "idiom": "mac",
+      "size": "128x128",
       "scale": "1x",
       "filename": "mac128.png"
     },
     {
+      "idiom": "mac",
       "size": "128x128",
-      "idiom": "mac",
       "scale": "2x",
       "filename": "mac256.png"
     },
     {
-      "size": "256x256",
       "idiom": "mac",
+      "size": "256x256",
       "scale": "1x",
       "filename": "mac256.png"
     },
     {
-      "size": "256x256",
       "idiom": "mac",
+      "size": "256x256",
       "scale": "2x",
       "filename": "mac512.png"
     },
     {
-      "size": "512x512",
       "idiom": "mac",
+      "size": "512x512",
       "scale": "1x",
       "filename": "mac512.png"
     },
     {
-      "size": "512x512",
       "idiom": "mac",
+      "size": "512x512",
       "scale": "2x",
       "filename": "mac1024.png"
     }
