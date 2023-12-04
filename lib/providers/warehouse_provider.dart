@@ -11,10 +11,12 @@ class Warehouse with ChangeNotifier {
 
   void getWarehouseItems() async {
     var responseJson = await CallApi().getData('magazzino');
-    List<Medicine> warehouse = List<Medicine>.from(
-        responseJson.map((model) => Medicine.fromJson(model)));
-    listItemsWarehouse = warehouse;
-    notifyListeners();
+    if (responseJson != null) {
+      List<Medicine> warehouse = List<Medicine>.from(
+          responseJson.map((model) => Medicine.fromJson(model)));
+      listItemsWarehouse = warehouse;
+      notifyListeners();
+    }
   }
 
   void addItemToStock(String codeItem, String qta) async {
