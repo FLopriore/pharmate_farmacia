@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pharmate_farmacia/data/api.dart';
+import 'package:pharmate_farmacia/providers/warehouse_provider.dart';
 import 'package:pharmate_farmacia/widgets/add_stock_text_field.dart';
+import 'package:provider/provider.dart';
 
 class DialogAddStock extends StatefulWidget {
   const DialogAddStock({super.key});
@@ -15,6 +16,7 @@ class _DialogAddStockState extends State<DialogAddStock> {
 
   @override
   Widget build(BuildContext context) {
+    var warehouse = Provider.of<Warehouse>(context);
     return AlertDialog(
       title: const Text(
         "Aggiungi Giacenza",
@@ -52,7 +54,12 @@ class _DialogAddStockState extends State<DialogAddStock> {
             fixedSize: const Size.fromHeight(55),
           ),
           onPressed: () {
-            _addItemToStock();
+            warehouse.addItemToStock(
+                medicineCodeController.text, quantityController.text);
+            setState(() {
+              medicineCodeController.text = "";
+              quantityController.text = "";
+            });
           },
           child: const Text("Aggiungi"),
         ),
@@ -69,18 +76,5 @@ class _DialogAddStockState extends State<DialogAddStock> {
         ),
       ],
     );
-  }
-
-  Future<void> _addItemToStock() async {
-    var data = {
-      'codeItem': medicineCodeController.text,
-      'qta': int.parse(quantityController.text),
-      // TODO: add pharmacy code and medicine name
-    };
-    await CallApi().postData(data, 'magazzino');
-    setState(() {
-      medicineCodeController.text = "";
-      quantityController.text = "";
-    });
   }
 }
