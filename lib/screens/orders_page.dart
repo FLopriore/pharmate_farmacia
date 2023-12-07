@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/widgets/orders_data_table.dart';
 import 'package:pharmate_farmacia/widgets/rounded_background_rectangle.dart';
 
 class OrdersPage extends StatelessWidget {
@@ -25,7 +26,7 @@ class OrdersPage extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 30),
-              child: RoundedBackgroundRectangle(child: Placeholder()),
+              child: RoundedBackgroundRectangle(child: OrdersDataTable()),
             ),
           )
         ],
