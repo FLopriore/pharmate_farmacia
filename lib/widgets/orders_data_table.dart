@@ -15,7 +15,13 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   @override
   void initState() {
     super.initState();
-    _getOrdersList();
+    Order order1 = Order(1, "Tachipirina", 2, Status.yellow, "pharmacy");
+    Order order2 = Order(2, "Tachipirina", 1, Status.red, "pharmacy");
+    Order order3 = Order(3, "Tachipirina", 2, Status.green, "pharmacy");
+    listOrders.add(order1);
+    listOrders.add(order2);
+    listOrders.add(order3);
+    //_getOrdersList();
   }
 
   @override
@@ -90,9 +96,9 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   Widget _getWidget(Status status) {
     switch (status) {
       case Status.red:
-        return TextButton(
+        return ElevatedButton(
           style: TextButton.styleFrom(
-            backgroundColor: Colors.red,
+            backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
           ),
           onPressed: () {
@@ -102,10 +108,14 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
           child: const Text("Accetta"),
         );
       case Status.yellow:
-        return TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.yellow,
-            foregroundColor: Colors.black87,
+        return OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Color(0xff023D74),
+            side: const BorderSide(
+              color: Color(0xff023D74),
+              width: 1.5,
+              style: BorderStyle.solid,
+            ),
           ),
           onPressed: () {
             // TODO: send notification to the user
