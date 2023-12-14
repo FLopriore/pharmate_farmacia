@@ -26,19 +26,18 @@ class _WarehouseItemsDataTableState extends State<WarehouseItemsDataTable> {
             DataColumn(
                 label: Text("Nome",
                     style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(
+            /* DataColumn(
               label: Text("Qtà", style: TextStyle(fontWeight: FontWeight.bold)),
               numeric: true,
-            ),
+            ),*/
           ],
           rows: List<DataRow>.generate(
               warehouse.listItemsWarehouse.length,
               (int index) => DataRow(cells: <DataCell>[
-                    DataCell(
-                        Text(warehouse.listItemsWarehouse[index].codeItem)),
-                    DataCell(Text(warehouse.listItemsWarehouse[index].name)),
-                    DataCell(Text(
-                        warehouse.listItemsWarehouse[index].qta.toString())),
+                    DataCell(Text(warehouse.listItemsWarehouse[index].aic)),
+                    DataCell(Text(warehouse.listItemsWarehouse[index].nome)),
+                    // TODO: get available quantity from warehouse
+                    //DataCell(Text(warehouse.listItemsWarehouse[index].qta.toString())),
                   ]))),
     );
   }

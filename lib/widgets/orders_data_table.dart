@@ -15,13 +15,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   @override
   void initState() {
     super.initState();
-    Order order1 = Order(1, "Tachipirina", 2, Status.yellow, "pharmacy");
-    Order order2 = Order(2, "Tachipirina", 1, Status.red, "pharmacy");
-    Order order3 = Order(3, "Tachipirina", 2, Status.green, "pharmacy");
-    listOrders.add(order1);
-    listOrders.add(order2);
-    listOrders.add(order3);
-    //_getOrdersList();
+    _getOrdersList();
   }
 
   @override
@@ -50,8 +44,8 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
         rows: List<DataRow>.generate(
             listOrders.length,
             (int index) => DataRow(cells: <DataCell>[
-                  DataCell(Text(listOrders[index].item)),
-                  DataCell(Text(listOrders[index].qta.toString())),
+                  DataCell(Text(listOrders[index].prodotto.nome)),
+                  DataCell(Text(listOrders[index].quantita.toString())),
                   DataCell(
                     Center(
                       child: Icon(
@@ -77,7 +71,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
 
   // Gets pending orders from the server and adds them in listOrders.
   void _getOrdersList() async {
-    var responseJson = await CallApi().getData('ordini');
+    var responseJson = await CallApi().getData('ordini/farmacia');
     if (responseJson != null) {
       List<Order> orders =
           List<Order>.from(responseJson.map((model) => Order.fromJson(model)));

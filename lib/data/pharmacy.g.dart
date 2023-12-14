@@ -1,19 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'medicine.dart';
+part of 'pharmacy.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Medicine _$MedicineFromJson(Map<String, dynamic> json) => Medicine(
+Pharmacy _$PharmacyFromJson(Map<String, dynamic> json) => Pharmacy(
       json['aic'] as String,
       json['nome'] as String,
       json['prezzo'] as num,
     );
 
-Map<String, dynamic> _$MedicineToJson(Medicine instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PharmacyToJson(Pharmacy instance) => <String, dynamic>{
       'aic': instance.aic,
       'nome': instance.nome,
       'prezzo': instance.prezzo,

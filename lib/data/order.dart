@@ -1,4 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pharmate_farmacia/data/medicine.dart';
+import 'package:pharmate_farmacia/data/pharmacy.dart';
+import 'package:pharmate_farmacia/data/user.dart';
 
 /// This allows the `Order` class to access private members in
 /// the generated file. The value for this is *.g.dart, where
@@ -7,15 +10,18 @@ part 'order.g.dart';
 
 /// An annotation for the code generator to know that this class needs the
 /// JSON serialization logic to be generated.
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Order {
-  int id; // order ID
-  String item; // ordered item
-  int qta; // quantity of items
+  int uuid; // order ID
+  Pharmacy farmacia;
+  User utente;
+  Medicine prodotto;
+  int quantita;
   Status status;
-  String pharmacy;
+  String date;
 
-  Order(this.id, this.item, this.qta, this.status, this.pharmacy);
+  Order(this.uuid, this.farmacia, this.utente, this.prodotto, this.quantita,
+      this.date, this.status);
 
   /// A necessary factory constructor for creating a new Order instance
   /// from a map. Pass the map to the generated `_$OrderFromJson()` constructor.
