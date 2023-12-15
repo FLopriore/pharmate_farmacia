@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/screens/history_page.dart';
 import 'package:pharmate_farmacia/screens/profile_page.dart';
 import 'package:pharmate_farmacia/screens/warehouse_page.dart';
 import 'package:pharmate_farmacia/widgets/custom_icon.dart';
@@ -23,6 +24,7 @@ class _NavRailState extends State<NavRail> {
   final navScreens = [
     const OrdersPage(),
     const WarehousePage(),
+    const HistoryPage(),
     const ProfilePage()
   ];
 
@@ -52,6 +54,11 @@ class _NavRailState extends State<NavRail> {
                 icon: Icon(Icons.warehouse_outlined),
                 selectedIcon: Icon(Icons.warehouse),
                 label: Text('Magazzino'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.check_circle_outline_rounded),
+                selectedIcon: Icon(Icons.check_circle_rounded),
+                label: Text('Storico'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.person_outlined),
