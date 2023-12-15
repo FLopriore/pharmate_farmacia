@@ -10,7 +10,7 @@ class Warehouse with ChangeNotifier {
   }
 
   void getWarehouseItems() async {
-    var responseJson = await CallApi().getData('magazzino');
+    var responseJson = await CallApi().getData('farmacie/giacenza');
     if (responseJson != null) {
       List<Medicine> warehouse = List<Medicine>.from(
           responseJson.map((model) => Medicine.fromJson(model)));
@@ -19,13 +19,9 @@ class Warehouse with ChangeNotifier {
     }
   }
 
-  void addItemToStock(String codeItem, String qta) async {
-    var data = {
-      'codeItem': codeItem,
-      'qta': int.parse(qta),
-      // TODO: add pharmacy code and medicine name
-    };
-    var response = await CallApi().postData(data, 'magazzino');
+  void addItemToStock(String codiceAic, String qta) async {
+    var response = await CallApi()
+        .postData("", 'farmacie/giacenza/$codiceAic?differenza=$qta');
     if (response != null) {
       getWarehouseItems();
     }
