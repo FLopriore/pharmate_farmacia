@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/widgets/change_password.dart';
+import 'package:pharmate_farmacia/widgets/confirm_dialog_delete.dart';
+import 'package:pharmate_farmacia/widgets/confirm_dialog_logout.dart';
 import 'package:pharmate_farmacia/widgets/profile_text.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -54,14 +56,14 @@ class ProfilePage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff023D74),
                     foregroundColor: Colors.white,
-                    fixedSize: const Size.fromHeight(45),
+                    fixedSize: const Size.fromWidth(220),
                   ),
                   onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => const ChangePass()),
-                  icon: const Icon(Icons.lock),
+                      builder: (BuildContext context) => const DialogConfirmLogOut()),
+                  icon: const Icon(Icons.logout),
                   label: const Text(
-                    "Cambia Password ",
+                    "LogOut ",
                     style:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
                   )),
@@ -75,14 +77,14 @@ class ProfilePage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffCAE6FF),
                     foregroundColor: const Color(0xff023D74),
-                    fixedSize: const Size.fromHeight(45),
+                    fixedSize: const Size.fromWidth(220),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.logout),
+                  onPressed: () => showDialog(
+                      context: context,
+                      builder: (BuildContext context) => const DialogConfirmDelete()),
+                  icon: const Icon(Icons.warning),
                   label: const Text(
-                    "Logout ",
+                    "Elimina Account",
                     style:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
                   )),
