@@ -71,7 +71,7 @@ class _NavRailState extends State<NavRail> {
                 padding: EdgeInsets.only(top: 10, bottom: 40),
                 child: CustomIcon(
                   icon: "assets/logo_no_background.png",
-                )) //TODO:Use Pharmate logo as leading
+                )) 
             ),
         const VerticalDivider(
           thickness: 1,
