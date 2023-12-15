@@ -9,11 +9,11 @@ part 'pharmacy.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable()
 class Pharmacy {
-  String aic; // AIC code of the medicine
-  String nome; // name of the medicine
-  num prezzo; // price of the medicine
+  String codice_farmacia; // pharmacy ID
+  String nome; // pharmacy name
+  String citta; // city where pharmacy is located
 
-  Pharmacy(this.aic, this.nome, this.prezzo); // price of the item
+  Pharmacy(this.codice_farmacia, this.nome, this.citta);
 
   /// A necessary factory constructor for creating a new Pharmacy instance
   /// from a map. Pass the map to the generated `_$PharmacyFromJson()` constructor.

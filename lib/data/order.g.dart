@@ -16,8 +16,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       $enumDecode(_$StatusEnumMap, json['status']),
     );
 
-Map<String, dynamic> _$OrderToJson(Order instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'uuid': instance.uuid,
       'farmacia': instance.farmacia.toJson(),
       'utente': instance.utente.toJson(),
@@ -28,7 +27,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) =>
     };
 
 const _$StatusEnumMap = {
-  Status.red: 'PENDING',
-  Status.yellow: 'ACCEPTED',
-  Status.green: 'DELIVERED',
+  Status.PENDING: 'PENDING',
+  Status.ACCEPTED: 'ACCEPTED',
+  Status.DELIVERED: 'DELIVERED',
 };

@@ -60,11 +60,11 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
 
   Color _getStatusColor(Status status) {
     switch (status) {
-      case Status.red:
+      case Status.PENDING:
         return Colors.red;
-      case Status.yellow:
+      case Status.ACCEPTED:
         return Colors.yellow;
-      case Status.green:
+      case Status.DELIVERED:
         return Colors.green;
     }
   }
@@ -89,7 +89,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   // - Status.green: shows a text that says the order is completed
   Widget _getWidget(Status status) {
     switch (status) {
-      case Status.red:
+      case Status.PENDING:
         return ElevatedButton(
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff023D74),
@@ -101,7 +101,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
           },
           child: const Text("Accetta"),
         );
-      case Status.yellow:
+      case Status.ACCEPTED:
         return OutlinedButton(
           style: OutlinedButton.styleFrom(
             foregroundColor: Color(0xff023D74),
@@ -117,7 +117,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
           },
           child: const Text("Vendi"),
         );
-      case Status.green:
+      case Status.DELIVERED:
         return const Text("Ordine completato");
     }
   }

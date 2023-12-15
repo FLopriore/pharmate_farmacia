@@ -35,7 +35,7 @@ class Order {
 }
 
 // Status of order
-// Red: not yet accepted by the pharmacy
-// Yellow: pending order (accepted, not yet picked up from pharmacy)
-// Green: order completed
-enum Status { red, yellow, green }
+// PENDING: not yet accepted by the pharmacy
+// ACCEPTED: pending order (accepted, not yet picked up from pharmacy)
+// DELIVERED: order completed
+enum Status { PENDING, ACCEPTED, DELIVERED }
