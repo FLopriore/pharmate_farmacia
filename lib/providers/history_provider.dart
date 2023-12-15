@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pharmate_farmacia/data/api.dart';
+import 'package:intl/intl.dart'; // for date format
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:pharmate_farmacia/data/order.dart';
 
 class History with ChangeNotifier {
@@ -7,6 +9,7 @@ class History with ChangeNotifier {
 
   History() {
     getHistoryOrders();
+    //sortHistoryDate(getDates(listHistoryOrders));
   }
 
   void getHistoryOrders() async {
@@ -18,4 +21,18 @@ class History with ChangeNotifier {
       notifyListeners();
     }
   }
+/*
+  void sortHistoryDate(List<String> dates){
+    dates.sort((a,b){
+      return DateTime.parse(a).compareTo(DateTime.parse(b));
+    });
+  }
+
+  List<String> getDates(List<Order> listOrders){
+      List<String> l = [];
+      for (var i = 0; i < listHistoryOrders.length;i++){
+        l.add(listHistoryOrders[i].date);
+      }
+      return l;
+  }*/
 }

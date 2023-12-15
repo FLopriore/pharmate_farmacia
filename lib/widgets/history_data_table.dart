@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pharmate_farmacia/providers/history_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -11,12 +12,13 @@ class HistoryDataTable extends StatefulWidget {
 }
 
 class _HistoryDataTableState extends State<HistoryDataTable> {
+  DateFormat formatter = DateFormat('yyyy-mm-dd');
   @override
   Widget build(BuildContext context) {
     return Consumer<History>(
       builder: (context, history, child) => DataTable(
-          sortColumnIndex: 0,
-          sortAscending: true,
+          sortColumnIndex: 3,
+          sortAscending: false,
           columns: const [
             DataColumn(
               label: Text("Codice AIC",
@@ -44,7 +46,7 @@ class _HistoryDataTableState extends State<HistoryDataTable> {
                     DataCell(Text(history.listHistoryOrders[index].prodotto.aic)),
                     DataCell(Text(history.listHistoryOrders[index].prodotto.nome)),
                     DataCell(Text("${history.listHistoryOrders[index].quantita}")),
-                    DataCell(Text(history.listHistoryOrders[index].date)),
+                    DataCell(Text(formatter.format(DateTime.parse(history.listHistoryOrders[index].date)))),
                     DataCell(Text("${history.listHistoryOrders[index].prodotto.prezzo}")),
                   ]))),
     );

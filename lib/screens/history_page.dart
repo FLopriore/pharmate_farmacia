@@ -8,26 +8,33 @@ class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
     @override
+
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => History(),
-      child: Scaffold(
-        body: Column(children: [
-          const SizedBox(height: 20),
-          const Text(
-            "Storico Ordini",
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 60,
-              color: Colors.black,
+      child: const Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+           SizedBox(height: 20),
+           Align(
+            alignment: Alignment.center,
+            child: Text(
+              "Storico Ordini",
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 60,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
-          const Expanded(
-              child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            child: RoundedBackgroundRectangle(child: HistoryDataTable()),
-          ))
+           Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30),
+              child: RoundedBackgroundRectangle(child: HistoryDataTable()),
+            ),
+          )
         ]),
       ),
     );
