@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pharmate_farmacia/data/medicine.dart';
 import 'package:pharmate_farmacia/data/pharmacy.dart';
-import 'package:pharmate_farmacia/data/user.dart';
 
 /// This allows the `Order` class to access private members in
 /// the generated file. The value for this is *.g.dart, where
@@ -12,16 +11,16 @@ part 'order.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable(explicitToJson: true)
 class Order {
-  int uuid; // order ID
-  Pharmacy farmacia;
-  User utente;
-  Medicine prodotto;
-  int quantita;
+  String uuid;    // order ID
+  Medicine prodotto;  // ordered item
+  int quantita;   // quantity of items
   Status status;
   String date;
+  Pharmacy farmacia;
 
-  Order(this.uuid, this.farmacia, this.utente, this.prodotto, this.quantita,
-      this.date, this.status);
+
+  Order(this.uuid, this.prodotto, this.quantita, this.status, this.date,
+      this.farmacia);
 
   /// A necessary factory constructor for creating a new Order instance
   /// from a map. Pass the map to the generated `_$OrderFromJson()` constructor.
@@ -38,4 +37,4 @@ class Order {
 // PENDING: not yet accepted by the pharmacy
 // ACCEPTED: pending order (accepted, not yet picked up from pharmacy)
 // DELIVERED: order completed
-enum Status { PENDING, ACCEPTED, DELIVERED }
+enum Status {PENDING, ACCEPTED, DELIVERED}

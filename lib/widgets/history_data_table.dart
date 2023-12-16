@@ -43,7 +43,7 @@ class _HistoryDataTableState extends State<HistoryDataTable> {
           rows: List<DataRow>.generate(
               history.listHistoryOrders.length,
               (int index) => DataRow(cells: <DataCell>[
-                    DataCell(Text(history.listHistoryOrders[index].prodotto.aic)),
+                    DataCell(Text(history.listHistoryOrders[index].prodotto.codice_aic)),
                     DataCell(Text(history.listHistoryOrders[index].prodotto.nome)),
                     DataCell(Text("${history.listHistoryOrders[index].quantita}")),
                     DataCell(Text(formatter.format(DateTime.parse(history.listHistoryOrders[index].date)))),

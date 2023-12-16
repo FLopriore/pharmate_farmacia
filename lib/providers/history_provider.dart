@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pharmate_farmacia/data/api.dart';
-import 'package:intl/intl.dart'; // for date format
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:pharmate_farmacia/data/order.dart';
+import 'package:pharmate_farmacia/json_useful_fields.dart';
 
 class History with ChangeNotifier {
   List<Order> listHistoryOrders = [];
@@ -14,9 +13,10 @@ class History with ChangeNotifier {
 
   void getHistoryOrders() async {
     var responseJson = await CallApi().getData('ordine/farmacia?status=DELIVERED');
+    var modresponseJson = JsonUsefulFields.getPharmaOrders(responseJson!);
     if (responseJson != null) {
       List<Order> history = List<Order>.from(
-          responseJson.map((model) => Order.fromJson(model)));
+          modresponseJson.map((model) => Order.fromJson(model)));
       listHistoryOrders = history;
       notifyListeners();
     }

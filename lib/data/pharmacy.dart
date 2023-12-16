@@ -9,17 +9,16 @@ part 'pharmacy.g.dart';
 /// JSON serialization logic to be generated.
 @JsonSerializable()
 class Pharmacy {
-  String codice_farmacia; // pharmacy ID
-  String nome; // pharmacy name
-  String citta; // city where pharmacy is located
+  String nome;
+  String codice_farmacia;
+  String citta;
 
-  Pharmacy(this.codice_farmacia, this.nome, this.citta);
+  Pharmacy(this.nome, this.codice_farmacia, this.citta);
 
   /// A necessary factory constructor for creating a new Pharmacy instance
   /// from a map. Pass the map to the generated `_$PharmacyFromJson()` constructor.
   /// The constructor is named after the source class, in this case, Pharmacy.
-  factory Pharmacy.fromJson(Map<String, dynamic> json) =>
-      _$PharmacyFromJson(json);
+  factory Pharmacy.fromJson(Map<String, dynamic> json) => _$PharmacyFromJson(json);
 
   /// `toJson` is the convention for a class to declare support for serialization
   /// to JSON. The implementation simply calls the private, generated

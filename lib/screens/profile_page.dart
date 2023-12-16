@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:pharmate_farmacia/widgets/change_password.dart';
+import 'package:pharmate_farmacia/data/api.dart';
+import 'package:pharmate_farmacia/data/user.dart';
+import 'package:pharmate_farmacia/json_useful_fields.dart';
 import 'package:pharmate_farmacia/widgets/confirm_dialog_delete.dart';
 import 'package:pharmate_farmacia/widgets/confirm_dialog_logout.dart';
 import 'package:pharmate_farmacia/widgets/profile_text.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+  } 
+
+class _ProfilePageState extends State<ProfilePage> {
+  late Future<Utente> userInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    userInfo = _getInfo();}
+
+  @override
   Widget build(BuildContext context) {
+    _getInfo();
     return Scaffold(
       body: Align(
         alignment: Alignment.center,
@@ -37,13 +52,31 @@ class ProfilePage extends StatelessWidget {
                 mainAxisSpacing: 10,
                 childAspectRatio: 5,
                 crossAxisCount: 2,
-                children: const <Widget>[
-                  ProfileText(title: 'Città: ', textAlign: TextAlign.end),
-                  ProfileText(title: 'Bari', textAlign: TextAlign.start), // TODO: add data from DB
-                  ProfileText(title: 'Via: ', textAlign: TextAlign.end),
-                  ProfileText(title: 'Via Marco Polo', textAlign: TextAlign.start), // TODO: add data from DB
-                  ProfileText(title: 'Partita IVA: ', textAlign: TextAlign.end),
-                  ProfileText(title: 'N0NCH0S0RD1', textAlign: TextAlign.start), // TODO: add data from DB
+                children: <Widget>[
+                  const ProfileText(title: 'Nome: ', textAlign: TextAlign.end),
+                  FutureBuilder(
+                    future: userInfo,
+                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.nome, textAlign: TextAlign.start);}
+                      else{return const Text("");}
+                    }
+                  ),
+                  const ProfileText(title: 'Città: ', textAlign: TextAlign.end),
+                  FutureBuilder(
+                    future: userInfo,
+                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.citta, textAlign: TextAlign.start);}
+                      else{return const Text("");}
+                    }
+                  ),// TODO: add data from DB
+                  const ProfileText(title: 'Codice: ', textAlign: TextAlign.end),
+                  FutureBuilder(
+                    future: userInfo,
+                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.codice_farmacia, textAlign: TextAlign.start);}
+                      else{return const Text("");}
+                    }
+                  ), // TODO: add data from DB
                 ],
               ),
             ),
@@ -94,4 +127,14 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+    Future<Utente> _getInfo() async {
+    var responseJson = await CallApi().getData("users/me");
+
+    // TODO: remove this variable when server is complete
+    var modresponseJson = JsonUsefulFields.getPharmaFields(responseJson!);
+
+    Utente inforesults = Utente.fromJson(modresponseJson);
+    return inforesults;
+  }
+  
 }
