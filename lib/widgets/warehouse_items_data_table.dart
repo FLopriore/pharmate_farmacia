@@ -34,7 +34,7 @@ class _WarehouseItemsDataTableState extends State<WarehouseItemsDataTable> {
           rows: List<DataRow>.generate(
               warehouse.listItemsWarehouse.length,
               (int index) => DataRow(cells: <DataCell>[
-                    DataCell(Text(warehouse.listItemsWarehouse[index].aic)),
+                    DataCell(Text(warehouse.listItemsWarehouse[index].codice_aic)),
                     DataCell(Text(warehouse.listItemsWarehouse[index].nome)),
                     // TODO: get available quantity from warehouse
                     //DataCell(Text(warehouse.listItemsWarehouse[index].qta.toString())),
