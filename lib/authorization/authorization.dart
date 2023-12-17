@@ -88,7 +88,7 @@ class Authorization {
     request.headers.set('Authorization', 'Bearer ${token!}');
     request.add(utf8.encode(jsonEncode(data)));
     HttpClientResponse response = await request.close();
-    if (response.statusCode == 200) {
+    if ((response.statusCode == 200) || (response.statusCode == 201)) {
       return true;
     }
     return false;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/authorization/authorization.dart';
+import 'package:pharmate_farmacia/widgets/error_login.dart';
 import 'package:pharmate_farmacia/widgets/login_text.dart';
 import 'package:pharmate_farmacia/widgets/nav_rail.dart';
 import 'package:pharmate_farmacia/widgets/rounded_text_field.dart';
@@ -69,11 +70,15 @@ class _PharmaRegistrationPageState extends State<PharmaRegistrationPage> {
                     if (success) {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const NavRail()));
-                    } // TODO: add dialog to show signup error
+                    } else{
+                      showDialog(
+                      context: context,
+                      builder: (BuildContext context) => const DialogErrorLogin());
+                    }
                   });
                 },
                 icon: const Icon(Icons.navigate_next),
-                label: const Text("Entra"),
+                label: const Text("Entra",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
               ),
             ),
           ],

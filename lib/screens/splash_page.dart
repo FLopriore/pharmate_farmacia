@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/authorization/login_secure_storage.dart';
 import 'package:pharmate_farmacia/data/api.dart';
-import 'package:pharmate_farmacia/screens/old_login.dart';
+import 'package:pharmate_farmacia/screens/login_page.dart';
 import 'package:pharmate_farmacia/widgets/nav_rail.dart';
 
 // Blank screen to login automatically if there are any stored tokens.

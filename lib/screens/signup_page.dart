@@ -40,12 +40,12 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ),
             const SizedBox(height: 20),
-            const LoginText(text: "Nome"),
+            const LoginText(text: "Codice Fiscale"),
             RoundedTextField(
                 controller: cfController,
                 hintText: "Inserisci il tuo codice fiscale",
             ),
-            const LoginText(text: "Nome"),
+            const LoginText(text: "Nome e Cognome"),
             RoundedTextField(
               controller: nameController,
               hintText: "Es. Mario Rossi",
