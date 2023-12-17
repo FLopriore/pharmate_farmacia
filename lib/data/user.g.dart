@@ -17,5 +17,5 @@ Map<String, dynamic> _$UtenteToJson(Utente instance) => <String, dynamic>{
       'cf': instance.cf,
       'fullname': instance.fullname,
       'citta': instance.citta,
-      'favourite': instance.worksIn.toJson(),
+      'worksIn': instance.worksIn.toJson(),
     };

@@ -8,7 +8,7 @@ class JsonUsefulFields {
       "cf": json["user"]["cf"],
       "fullname": json["user"]["fullname"],
       "citta": json["user"]["citta"],
-      "favourite": json["user"]["worksIn"],
+      "worksIn": json["user"]["worksIn"],
     };
     return data;
   }

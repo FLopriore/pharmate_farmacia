@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/data/api.dart';
-import 'package:pharmate_farmacia/data/pharmacy.dart';
 import 'package:pharmate_farmacia/data/user.dart';
 import 'package:pharmate_farmacia/json_useful_fields.dart';
 import 'package:pharmate_farmacia/widgets/confirm_dialog_delete.dart';
@@ -14,7 +11,7 @@ class ProfilePage extends StatefulWidget {
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
-  } 
+  }
 
 class _ProfilePageState extends State<ProfilePage> {
   late Future<Utente> userInfo;
@@ -131,17 +128,13 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-    Future<Utente> _getInfo() async {
-    Utente inforesults = Utente("null", "null", "null", Pharmacy("null", "null", "null"));
+
+  Future<Utente> _getInfo() async {
     var responseJson = await CallApi().getData("users/me");
-    
     // TODO: remove this variable when server is complete
-    var modresponseJson = JsonUsefulFields.getPharmaFields(responseJson);
-    if(modresponseJson.isNotEmpty){
-      Utente inforesults = Utente.fromJson(modresponseJson);
-      return inforesults;
-    }
-    else{return inforesults;}
+    var modresponseJson = JsonUsefulFields.getPharmaFields(responseJson!);
+
+    Utente inforesults = Utente.fromJson(modresponseJson);
+    return inforesults;
   }
-  
 }
