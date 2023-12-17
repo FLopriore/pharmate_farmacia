@@ -13,9 +13,9 @@ class Utente {
   String cf;
   String fullname;
   String citta;
-  Pharmacy favourite;
+  Pharmacy worksIn;
 
-  Utente(this.cf, this.fullname, this.citta, this.favourite);
+  Utente(this.cf, this.fullname, this.citta, this.worksIn);
 
   /// A necessary factory constructor for creating a new Pharmacy instance
   /// from a map. Pass the map to the generated `_$UserInfoFromJson()` constructor.

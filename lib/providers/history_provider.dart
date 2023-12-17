@@ -13,8 +13,8 @@ class History with ChangeNotifier {
 
   void getHistoryOrders() async {
     var responseJson = await CallApi().getData('ordine/farmacia?status=DELIVERED');
-    var modresponseJson = JsonUsefulFields.getPharmaOrders(responseJson!);
-    if (responseJson != null) {
+    var modresponseJson = JsonUsefulFields.getPharmaOrders(responseJson);
+    if (modresponseJson.isNotEmpty) {
       List<Order> history = List<Order>.from(
           modresponseJson.map((model) => Order.fromJson(model)));
       listHistoryOrders = history;

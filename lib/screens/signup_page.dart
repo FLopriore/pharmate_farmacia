@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   });
                 },
                 icon: const Icon(Icons.navigate_next),
-                label: const Text("Successivo"),
+                label: const Text("Successivo",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
               ),
             ),
           ],

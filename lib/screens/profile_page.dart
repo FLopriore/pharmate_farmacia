@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/data/api.dart';
+import 'package:pharmate_farmacia/data/pharmacy.dart';
 import 'package:pharmate_farmacia/data/user.dart';
 import 'package:pharmate_farmacia/json_useful_fields.dart';
 import 'package:pharmate_farmacia/widgets/confirm_dialog_delete.dart';
@@ -19,7 +22,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    userInfo = _getInfo();}
+    userInfo = _getInfo();
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   FutureBuilder(
                     future: userInfo,
                     builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.nome, textAlign: TextAlign.start);}
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.nome, textAlign: TextAlign.start);}
                       else{return const Text("");}
                     }
                   ),
@@ -65,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   FutureBuilder(
                     future: userInfo,
                     builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.citta, textAlign: TextAlign.start);}
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.citta, textAlign: TextAlign.start);}
                       else{return const Text("");}
                     }
                   ),// TODO: add data from DB
@@ -73,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   FutureBuilder(
                     future: userInfo,
                     builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.favourite.codice_farmacia, textAlign: TextAlign.start);}
+                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.codice_farmacia, textAlign: TextAlign.start);}
                       else{return const Text("");}
                     }
                   ), // TODO: add data from DB
@@ -128,13 +132,16 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
     Future<Utente> _getInfo() async {
+    Utente inforesults = Utente("null", "null", "null", Pharmacy("null", "null", "null"));
     var responseJson = await CallApi().getData("users/me");
-
+    
     // TODO: remove this variable when server is complete
-    var modresponseJson = JsonUsefulFields.getPharmaFields(responseJson!);
-
-    Utente inforesults = Utente.fromJson(modresponseJson);
-    return inforesults;
+    var modresponseJson = JsonUsefulFields.getPharmaFields(responseJson);
+    if(modresponseJson.isNotEmpty){
+      Utente inforesults = Utente.fromJson(modresponseJson);
+      return inforesults;
+    }
+    else{return inforesults;}
   }
   
 }

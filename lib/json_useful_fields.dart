@@ -1,12 +1,14 @@
 /// This class contains several methods which modify responseJson coming from
 /// server, converting wrong attributes into the desired ones.
 class JsonUsefulFields {
+  
   // users/me
   static Map<String, dynamic> getPharmaFields(json) {
     var data = {
-      "nome": json["worksIn"]["nome"],
-      "codice_farmacia": json["worksIn"]["codice_farmacia"],
-      "citta": json["worksIn"]["citta"],
+      "cf": json["user"]["cf"],
+      "fullname": json["user"]["fullname"],
+      "citta": json["user"]["citta"],
+      "favourite": json["user"]["worksIn"],
     };
     return data;
   }
