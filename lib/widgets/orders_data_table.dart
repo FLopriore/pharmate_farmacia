@@ -42,7 +42,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                       numeric: true,
                     ),
                     DataColumn(
-                        label: Text("Codice Prodotto",
+                        label: Text("Codice AIC",
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     DataColumn(
                         label: Text("Prodotto",
@@ -62,20 +62,21 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                   rows: List<DataRow>.generate(
                       snapshot.data!.length,
                       (int index) => DataRow(cells: <DataCell>[
-                            DataCell(Text(formatter.format(DateTime.parse(snapshot.data![index].date)))),
-                            DataCell(Text(snapshot.data![index].prodotto.codice_aic)),
-                            DataCell(ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 150),
-                              child: Text(
-                                snapshot.data![index].prodotto.nome,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                            DataCell(Text(formatter.format(
+                                DateTime.parse(snapshot.data![index].date)))),
+                            DataCell(Text(
+                                snapshot.data![index].prodotto.codice_aic)),
+                            DataCell(Text(
+                              snapshot.data![index].prodotto.nome,
+                              overflow: TextOverflow.ellipsis,
                             )),
-                            DataCell(Text(snapshot.data![index].quantita.toString())),
+                            DataCell(Text(
+                                snapshot.data![index].quantita.toString())),
                             DataCell(Center(
                               child: Icon(
                                 Icons.circle,
-                                color: _getStatusColor(snapshot.data![index].status),
+                                color: _getStatusColor(
+                                    snapshot.data![index].status),
                               ),
                             )),
                             DataCell(_getWidget(snapshot.data![index].status)),
