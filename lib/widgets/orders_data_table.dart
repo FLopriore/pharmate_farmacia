@@ -15,7 +15,6 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   late Future<List<Order>> myOrdersList;
   DateFormat formatter = DateFormat().add_yMMMd();
 
-
   @override
   void initState() {
     super.initState();
@@ -24,8 +23,8 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Order>>(
-      future: myOrdersList,
+    return StreamBuilder<List<Order>>(
+      stream: Stream.fromFuture(myOrdersList),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return SingleChildScrollView(
@@ -36,6 +35,11 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                   sortAscending: false,
                   dataRowMinHeight: 40.0,
                   columns: const [
+                    DataColumn(
+                      label: Text("ID ordine",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      numeric: true,
+                    ),
                     DataColumn(
                       label: Text("Data",
                           style: TextStyle(fontWeight: FontWeight.bold)),
@@ -62,14 +66,18 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                   rows: List<DataRow>.generate(
                       snapshot.data!.length,
                       (int index) => DataRow(cells: <DataCell>[
+                            DataCell(ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 200),
+                              child: Text(
+                                snapshot.data![index].uuid,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )),
                             DataCell(Text(formatter.format(
                                 DateTime.parse(snapshot.data![index].date)))),
                             DataCell(Text(
                                 snapshot.data![index].prodotto.codice_aic)),
-                            DataCell(Text(
-                              snapshot.data![index].prodotto.nome,
-                              overflow: TextOverflow.ellipsis,
-                            )),
+                            DataCell(Text(snapshot.data![index].prodotto.nome)),
                             DataCell(Text(
                                 snapshot.data![index].quantita.toString())),
                             DataCell(Center(
@@ -79,7 +87,8 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                                     snapshot.data![index].status),
                               ),
                             )),
-                            DataCell(_getWidget(snapshot.data![index].status)),
+                            DataCell(_getWidget(snapshot.data![index].status,
+                                snapshot.data![index].uuid)),
                           ]))),
             ),
           );
@@ -110,7 +119,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   //   to the user
   // - Status.yellow: shows a button to confirm the item has been sold
   // - Status.green: shows a text that says the order is completed
-  Widget _getWidget(Status status) {
+  Widget _getWidget(Status status, String uuid) {
     switch (status) {
       case Status.PENDING:
         return ElevatedButton(
@@ -119,8 +128,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
             foregroundColor: Colors.white,
           ),
           onPressed: () {
-            // TODO: send notification to the user
-            // TODO: set status to yellow
+            _acceptOrder(uuid);
           },
           child: const Text("Accetta"),
         );
@@ -135,8 +143,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
             ),
           ),
           onPressed: () {
-            // TODO: send notification to the user
-            // TODO: set status to green
+            _deliverOrder(uuid);
           },
           child: const Text("Vendi"),
         );
@@ -167,5 +174,25 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
     }
 
     return myOrders;
+  }
+
+  Future<void> _acceptOrder(String uuid) async {
+    var response = await CallApi().putData('ordine/accept?uuid=$uuid');
+    // TODO: check response == true
+    //if (response) {
+    setState(() {
+      myOrdersList = getMyOrders();
+    });
+    //}
+  }
+
+  Future<void> _deliverOrder(String uuid) async {
+    var response = await CallApi().putData('ordine/sell?uuid=$uuid');
+    // TODO: check response == true
+    //if (response) {
+    setState(() {
+      myOrdersList = getMyOrders();
+    });
+    //}
   }
 }

@@ -19,10 +19,10 @@ class WarehouseItem {
   /// from a map. Pass the map to the generated `_$AvailMedicineFromJson()` constructor.
   /// The constructor is named after the source class, in this case, Medicine.
   factory WarehouseItem.fromJson(Map<String, dynamic> json) =>
-      _$AvailMedicineFromJson(json);
+      _$WarehouseItemFromJson(json);
 
   /// `toJson` is the convention for a class to declare support for serialization
   /// to JSON. The implementation simply calls the private, generated
   /// helper method `_$AvailMedicineToJson`.
-  Map<String, dynamic> toJson() => _$AvailMedicineToJson(this);
+  Map<String, dynamic> toJson() => _$WarehouseItemToJson(this);
 }

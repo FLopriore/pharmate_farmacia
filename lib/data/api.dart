@@ -76,4 +76,27 @@ class CallApi {
       return false;
     }
   }
+
+  // PUT
+  Future<bool> putData(String apiUrl) async {
+    String fullUrl = _url + apiUrl;
+    HttpClient client = HttpClient();
+    // Bypass SSL certification
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
+
+    HttpClientRequest request = await client.putUrl(Uri.parse(fullUrl));
+    request.headers.set('accept', '*/*');
+
+    String? token =
+        await LoginSecureStorage.getLoginSecureStorage('loginToken');
+    request.headers.set('Authorization', 'Bearer ${token!}');
+    HttpClientResponse result = await request.close();
+
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
