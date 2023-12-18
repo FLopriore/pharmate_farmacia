@@ -10,16 +10,16 @@ class DialogConfirmLogOut extends StatefulWidget {
 }
 
 class _DialogConfirmLogOutState extends State<DialogConfirmLogOut> {
-  
-
   @override
   Widget build(BuildContext context) {
-    
     return AlertDialog(
-      title: const Text("Log Out",style:TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+      title: const Text(
+        "Log Out",
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
       ),
-      content: const Text("Sei sicuro di uscire dal profilo?(Dovrai effetuare di nuovo il login)",style:TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
-
+      content: const Text(
+          "Sei sicuro di uscire dal profilo?\nDovrai effetuare di nuovo il login.",
+          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
       actions: [
         TextButton(
           style: TextButton.styleFrom(
@@ -47,7 +47,6 @@ class _DialogConfirmLogOutState extends State<DialogConfirmLogOut> {
           child: const Text("Annulla"),
         ),
       ],
-
     );
   }
 }

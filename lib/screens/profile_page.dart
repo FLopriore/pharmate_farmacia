@@ -11,7 +11,7 @@ class ProfilePage extends StatefulWidget {
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
-  }
+}
 
 class _ProfilePageState extends State<ProfilePage> {
   late Future<Utente> userInfo;
@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     userInfo = _getInfo();
-    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,28 +56,44 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: <Widget>[
                   const ProfileText(title: 'Nome: ', textAlign: TextAlign.end),
                   FutureBuilder(
-                    future: userInfo,
-                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.nome, textAlign: TextAlign.start);}
-                      else{return const Text("");}
-                    }
-                  ),
+                      future: userInfo,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<Utente> snapshot) {
+                        if (snapshot.hasData) {
+                          return ProfileText(
+                              title: snapshot.data!.worksIn.nome,
+                              textAlign: TextAlign.start);
+                        } else {
+                          return const Text("");
+                        }
+                      }),
                   const ProfileText(title: 'Città: ', textAlign: TextAlign.end),
                   FutureBuilder(
-                    future: userInfo,
-                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.citta, textAlign: TextAlign.start);}
-                      else{return const Text("");}
-                    }
-                  ),// TODO: add data from DB
-                  const ProfileText(title: 'Codice: ', textAlign: TextAlign.end),
+                      future: userInfo,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<Utente> snapshot) {
+                        if (snapshot.hasData) {
+                          return ProfileText(
+                              title: snapshot.data!.worksIn.citta,
+                              textAlign: TextAlign.start);
+                        } else {
+                          return const Text("");
+                        }
+                      }),
+                  const ProfileText(
+                      title: 'Codice: ', textAlign: TextAlign.end),
                   FutureBuilder(
-                    future: userInfo,
-                    builder: (BuildContext context, AsyncSnapshot<Utente> snapshot) {
-                      if (snapshot.hasData) {return ProfileText(title: snapshot.data!.worksIn.codice_farmacia, textAlign: TextAlign.start);}
-                      else{return const Text("");}
-                    }
-                  ), // TODO: add data from DB
+                      future: userInfo,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<Utente> snapshot) {
+                        if (snapshot.hasData) {
+                          return ProfileText(
+                              title: snapshot.data!.worksIn.codice_farmacia,
+                              textAlign: TextAlign.start);
+                        } else {
+                          return const Text("");
+                        }
+                      }), // TODO: add data from DB
                 ],
               ),
             ),
@@ -94,7 +110,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => const DialogConfirmLogOut()),
+                      builder: (BuildContext context) =>
+                          const DialogConfirmLogOut()),
                   icon: const Icon(Icons.logout),
                   label: const Text(
                     "LogOut ",
@@ -115,7 +132,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => const DialogConfirmDelete()),
+                      builder: (BuildContext context) =>
+                          const DialogConfirmDelete()),
                   icon: const Icon(Icons.warning),
                   label: const Text(
                     "Elimina Account",

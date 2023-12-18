@@ -13,11 +13,14 @@ class DialogConfirmDelete extends StatefulWidget {
 class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
   @override
   Widget build(BuildContext context) {
-    
     return AlertDialog(
-      title: const Text("Elimina Account",style:TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+      title: const Text(
+        "Elimina Account",
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
       ),
-      content: const Text("Sei sicuro di voler cancellare il tuo account Pharmate(operazione irreversibile)",style:TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
+      content: const Text(
+          "Sei sicuro di voler cancellare il tuo account Pharmate?\nL'operazione è irreversibile.",
+          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
       actions: [
         TextButton(
           style: TextButton.styleFrom(
