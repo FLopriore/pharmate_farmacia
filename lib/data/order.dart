@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pharmate_farmacia/data/medicine.dart';
-import 'package:pharmate_farmacia/data/pharmacy.dart';
 
 /// This allows the `Order` class to access private members in
 /// the generated file. The value for this is *.g.dart, where

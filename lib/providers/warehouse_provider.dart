@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pharmate_farmacia/data/api.dart';
-import 'package:pharmate_farmacia/data/medicine.dart';
+import 'package:pharmate_farmacia/data/warehouse_item.dart';
+import 'package:pharmate_farmacia/json_useful_fields.dart';
 
 class Warehouse with ChangeNotifier {
-  List<Medicine> listItemsWarehouse = [];
+  List<WarehouseItem> listItemsWarehouse = [];
 
   Warehouse() {
     getWarehouseItems();
@@ -11,9 +12,10 @@ class Warehouse with ChangeNotifier {
 
   void getWarehouseItems() async {
     var responseJson = await CallApi().getData('farmacie/giacenza');
-    if (responseJson != null) {
-      List<Medicine> warehouse = List<Medicine>.from(
-          responseJson.map((model) => Medicine.fromJson(model)));
+    var modResponseJson = JsonUsefulFields.getWarehouseItems(responseJson);
+    if (modResponseJson.isNotEmpty) {
+      List<WarehouseItem> warehouse = List<WarehouseItem>.from(
+          modResponseJson.map((model) => WarehouseItem.fromJson(model)));
       listItemsWarehouse = warehouse;
       notifyListeners();
     }
@@ -22,7 +24,7 @@ class Warehouse with ChangeNotifier {
   void addItemToStock(String codiceAic, String qta) async {
     var response = await CallApi()
         .postData("", 'farmacie/giacenza/$codiceAic?differenza=$qta');
-    if (response != null) {
+    if (response) {
       getWarehouseItems();
     }
   }

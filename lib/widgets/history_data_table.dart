@@ -98,8 +98,7 @@ class _HistoryDataTableState extends State<HistoryDataTable> {
     }
   }
 
-  // Gets all the orders done by the user.
-  // After creating the 3 lists, returns the combined list with all of them.
+  // Gets all the delivered orders.
   Future<List<Order>> getHistoryOrders() async {
     List<Order> myOrders = [];
     // Get delivered orders

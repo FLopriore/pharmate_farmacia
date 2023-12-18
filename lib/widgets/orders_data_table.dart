@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pharmate_farmacia/data/api.dart';
@@ -128,7 +126,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
       case Status.ACCEPTED:
         return OutlinedButton(
           style: OutlinedButton.styleFrom(
-            foregroundColor: Color(0xff023D74),
+            foregroundColor: const Color(0xff023D74),
             side: const BorderSide(
               color: Color(0xff023D74),
               width: 1.5,
@@ -146,28 +144,27 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
     }
   }
 
-   Future<List<Order>> getMyOrders() async {
+  // Gets pending and accepted orders..
+  // After creating the 2 lists, returns the combined list with all of them.
+  Future<List<Order>> getMyOrders() async {
     List<Order> myOrders = [];
-    var response;
-    var modResponse;
+
     // Get pending orders
-    response = await CallApi().getData('ordine/farmacia?status=PENDING');
-    if (response.statusCode == 200){
-    modResponse = JsonUsefulFields.getPharmaOrders(response);
+    var response = await CallApi().getData('ordine/farmacia?status=PENDING');
+    var modResponse = JsonUsefulFields.getPharmaOrders(response);
     if (modResponse.isNotEmpty) {
-      myOrders = 
+      myOrders =
           List<Order>.from(modResponse.map((model) => Order.fromJson(model)));
     }
-    }
+
     // Get accepted orders
     response = await CallApi().getData('ordine/farmacia?status=ACCEPTED');
-    if(response.statusCode == 200){
     modResponse = JsonUsefulFields.getPharmaOrders(response);
-
     if (modResponse.isNotEmpty) {
-      myOrders = myOrders + List<Order>.from(modResponse.map((model) => Order.fromJson(model)));
+      myOrders = myOrders +
+          List<Order>.from(modResponse.map((model) => Order.fromJson(model)));
     }
-    }
+
     return myOrders;
   }
 }
