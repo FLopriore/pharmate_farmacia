@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:pharmate_farmacia/authorization/login_secure_storage.dart';
 
@@ -53,6 +52,28 @@ class CallApi {
     }
     return null;
   }
- 
- //TODO: Add delete method
+
+  //DELETE
+  Future<bool> deleteData(String apiUrl) async {
+    String fullUrl = _url + apiUrl;
+    HttpClient client = HttpClient();
+    // Bypass SSL certification
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
+
+    HttpClientRequest request = await client.deleteUrl(Uri.parse(fullUrl));
+    request.headers.set('Content-Type', 'application/json');
+    request.headers.set('accept', '*/*');
+
+    String? token =
+        await LoginSecureStorage.getLoginSecureStorage('loginToken');
+    request.headers.set('Authorization', 'Bearer ${token!}');
+    HttpClientResponse result = await request.close();
+
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

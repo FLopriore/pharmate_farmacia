@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pharmate_farmacia/authorization/login_secure_storage.dart';
+import 'package:pharmate_farmacia/data/api.dart';
 import 'package:pharmate_farmacia/screens/login_page.dart';
 
 class DialogConfirmDelete extends StatefulWidget {
@@ -9,10 +11,6 @@ class DialogConfirmDelete extends StatefulWidget {
 }
 
 class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
-  /*void _deleteUser() async {
-  await CallApi().deleteData("users/");
-}*/
-
   @override
   Widget build(BuildContext context) {
     
@@ -28,10 +26,10 @@ class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
             fixedSize: const Size.fromWidth(100),
           ),
           onPressed: () {
-            //_deleteUser();
+            _deleteUser();
             Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                        (Route<dynamic> route) => false);
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+                (Route<dynamic> route) => false);
           },
           child: const Text("Conferma"),
         ),
@@ -47,7 +45,11 @@ class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
           child: const Text("Annulla"),
         ),
       ],
-
     );
+  }
+
+  Future<void> _deleteUser() async {
+    bool deleteSuccess = await CallApi().deleteData("users/");
+    if (deleteSuccess) LoginSecureStorage.deleteLoginSecureStorage();
   }
 }

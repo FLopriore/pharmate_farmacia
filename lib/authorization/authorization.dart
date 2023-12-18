@@ -68,17 +68,19 @@ class Authorization {
   }
 
   //Create a new Pharma
-  Future<bool> createPharmacy(String nome,String citta,String pharmacyCode) async {
+  Future<bool> createPharmacy(
+      String nome, String citta, String pharmacyCode) async {
     var data = {
       'nome': nome,
-      'citta':citta,
-      'codice_farmacia': pharmacyCode
-      };
+      'citta': citta,
+      'codice_farmacia': pharmacyCode,
+    };
     String fullUrl = '${_url}farmacie/create';
 
     HttpClient client = HttpClient();
     // Bypass SSL certification
-    client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
 
     HttpClientRequest request = await client.postUrl(Uri.parse(fullUrl));
     request.headers.set('Content-Type', 'application/json');
