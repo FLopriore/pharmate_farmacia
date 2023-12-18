@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             const SizedBox(height: 20),
             const Text(
-              "Farmacia del Cambio",
+              "Profilo Farmacia",
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 60,

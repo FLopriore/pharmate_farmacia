@@ -16,11 +16,9 @@ class Order {
   int quantita;   // quantity of items
   Status status;
   String date;
-  Pharmacy farmacia;
 
 
-  Order(this.uuid, this.prodotto, this.quantita, this.status, this.date,
-      this.farmacia);
+  Order(this.uuid, this.prodotto, this.quantita, this.status, this.date,);
 
   /// A necessary factory constructor for creating a new Order instance
   /// from a map. Pass the map to the generated `_$OrderFromJson()` constructor.

@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pharmate_farmacia/data/api.dart';
 import 'package:pharmate_farmacia/data/order.dart';
+import 'package:pharmate_farmacia/json_useful_fields.dart';
 
 class OrdersDataTable extends StatefulWidget {
   const OrdersDataTable({super.key});
@@ -10,52 +14,84 @@ class OrdersDataTable extends StatefulWidget {
 }
 
 class _OrdersDataTableState extends State<OrdersDataTable> {
-  List<Order> listOrders = [];
+  late Future<List<Order>> myOrdersList;
+  DateFormat formatter = DateFormat().add_yMMMd();
+
 
   @override
   void initState() {
     super.initState();
-    _getOrdersList();
+    myOrdersList = getMyOrders();
   }
 
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-        sortColumnIndex: 0,
-        sortAscending: true,
-        columns: const [
-          DataColumn(
-            label:
-                Text("Prodotto", style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          DataColumn(
-            label: Text("Qtà", style: TextStyle(fontWeight: FontWeight.bold)),
-            numeric: true,
-          ),
-          DataColumn(
-            label:
-                Text("Status", style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-          DataColumn(
-            label:
-                Text("Azione", style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-        ],
-        rows: List<DataRow>.generate(
-            listOrders.length,
-            (int index) => DataRow(cells: <DataCell>[
-                  DataCell(Text(listOrders[index].prodotto.nome)),
-                  DataCell(Text(listOrders[index].quantita.toString())),
-                  DataCell(
-                    Center(
-                      child: Icon(
-                        Icons.circle,
-                        color: _getStatusColor(listOrders[index].status),
-                      ),
+    return FutureBuilder<List<Order>>(
+      future: myOrdersList,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return SingleChildScrollView(
+            child: FittedBox(
+              alignment: Alignment.topCenter,
+              child: DataTable(
+                  sortColumnIndex: 0,
+                  sortAscending: false,
+                  dataRowMinHeight: 40.0,
+                  columns: const [
+                    DataColumn(
+                      label: Text("Data",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      numeric: true,
                     ),
-                  ),
-                  DataCell(_getWidget(listOrders[index].status)),
-                ])));
+                    DataColumn(
+                        label: Text("Codice Prodotto",
+                            style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(
+                        label: Text("Prodotto",
+                            style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(
+                      label: Text("Qtà",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      numeric: true,
+                    ),
+                    DataColumn(
+                        label: Text("Stato",
+                            style: TextStyle(fontWeight: FontWeight.bold))),
+                    DataColumn(
+                        label: Text("Azione",
+                            style: TextStyle(fontWeight: FontWeight.bold))),
+                  ],
+                  rows: List<DataRow>.generate(
+                      snapshot.data!.length,
+                      (int index) => DataRow(cells: <DataCell>[
+                            DataCell(Text(formatter.format(DateTime.parse(snapshot.data![index].date)))),
+                            DataCell(Text(snapshot.data![index].prodotto.codice_aic)),
+                            DataCell(ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 150),
+                              child: Text(
+                                snapshot.data![index].prodotto.nome,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )),
+                            DataCell(Text(snapshot.data![index].quantita.toString())),
+                            DataCell(Center(
+                              child: Icon(
+                                Icons.circle,
+                                color: _getStatusColor(snapshot.data![index].status),
+                              ),
+                            )),
+                            DataCell(_getWidget(snapshot.data![index].status)),
+                          ]))),
+            ),
+          );
+        } else {
+          return const Scaffold(
+            backgroundColor: Color(0xFFF1F1EA),
+            body: Center(child: Text("Non ci sono ordini")),
+          );
+        }
+      },
+    );
   }
 
   Color _getStatusColor(Status status) {
@@ -66,18 +102,6 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
         return Colors.yellow;
       case Status.DELIVERED:
         return Colors.green;
-    }
-  }
-
-  // Gets pending orders from the server and adds them in listOrders.
-  void _getOrdersList() async {
-    var responseJson = await CallApi().getData('ordini/farmacia');
-    if (responseJson != null) {
-      List<Order> orders =
-          List<Order>.from(responseJson.map((model) => Order.fromJson(model)));
-      setState(() {
-        listOrders = orders;
-      });
     }
   }
 
@@ -120,5 +144,30 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
       case Status.DELIVERED:
         return const Text("Ordine completato");
     }
+  }
+
+   Future<List<Order>> getMyOrders() async {
+    List<Order> myOrders = [];
+    var response;
+    var modResponse;
+    // Get pending orders
+    response = await CallApi().getData('ordine/farmacia?status=PENDING');
+    if (response.statusCode == 200){
+    modResponse = JsonUsefulFields.getPharmaOrders(response);
+    if (modResponse.isNotEmpty) {
+      myOrders = 
+          List<Order>.from(modResponse.map((model) => Order.fromJson(model)));
+    }
+    }
+    // Get accepted orders
+    response = await CallApi().getData('ordine/farmacia?status=ACCEPTED');
+    if(response.statusCode == 200){
+    modResponse = JsonUsefulFields.getPharmaOrders(response);
+
+    if (modResponse.isNotEmpty) {
+      myOrders = myOrders + List<Order>.from(modResponse.map((model) => Order.fromJson(model)));
+    }
+    }
+    return myOrders;
   }
 }
