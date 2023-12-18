@@ -15,17 +15,18 @@ class _DialogConfirmLogOutState extends State<DialogConfirmLogOut> {
     return AlertDialog(
       title: const Text(
         "Log Out",
-        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 40),
       ),
       content: const Text(
-          "Sei sicuro di uscire dal profilo?\nDovrai effetuare di nuovo il login.",
-          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
+          "Sei sicuro di uscire dal profilo? \nRicordati che dovrai effetuare di nuovo il login.",
+          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
       actions: [
         TextButton(
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
-            fixedSize: const Size.fromWidth(100),
+            fixedSize: const Size.fromWidth(150),
+            elevation: 5
           ),
           onPressed: () {
             LoginSecureStorage.deleteLoginSecureStorage();
@@ -33,7 +34,7 @@ class _DialogConfirmLogOutState extends State<DialogConfirmLogOut> {
                 MaterialPageRoute(builder: (context) => const LoginPage()),
                 (Route<dynamic> route) => false);
           },
-          child: const Text("Conferma"),
+          child: const Text("Conferma",style: TextStyle(fontSize: 20),),
         ),
         TextButton(
           onPressed: () {
@@ -42,9 +43,10 @@ class _DialogConfirmLogOutState extends State<DialogConfirmLogOut> {
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xffCAE6FF),
             foregroundColor: const Color(0xff023D74),
-            fixedSize: const Size.fromWidth(100),
+            fixedSize: const Size.fromWidth(150),
+            elevation: 5
           ),
-          child: const Text("Annulla"),
+          child: const Text("Annulla",style: TextStyle(fontSize: 20)),
         ),
       ],
     );

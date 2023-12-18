@@ -36,38 +36,51 @@ class _HistoryDataTableState extends State<HistoryDataTable> {
                   dataRowMinHeight: 40.0,
                   columns: const [
                     DataColumn(
+                      label: Text("ID ordine",
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                      numeric: true,
+                    ),
+                    DataColumn(
                       label: Text("Data",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                       numeric: true,
                     ),
                     DataColumn(
                         label: Text("Codice Prodotto",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                     DataColumn(
                         label: Text("Prodotto",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                     DataColumn(
                       label: Text("Qtà",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                       numeric: true,
                     ),
                     DataColumn(
                         label: Text("Stato",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                   ],
                   rows: List<DataRow>.generate(
                       snapshot.data!.length,
                       (int index) => DataRow(cells: <DataCell>[
-                            DataCell(Text(formatter.format(DateTime.parse(snapshot.data![index].date)))),
-                            DataCell(Text(snapshot.data![index].prodotto.codice_aic)),
+                             DataCell(ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 200),
+                              child: Text(
+                                snapshot.data![index].uuid,
+                                overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 20)),
+                            )),
+                            DataCell(Text(formatter.format(DateTime.parse(snapshot.data![index].date)),style: const TextStyle(fontSize: 20))),
+                            DataCell(Text(snapshot.data![index].prodotto.codice_aic,style: const TextStyle(fontSize: 20))),
                             DataCell(ConstrainedBox(
                               constraints: const BoxConstraints(maxWidth: 150),
                               child: Text(
                                 snapshot.data![index].prodotto.nome,
                                 overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(fontSize: 20)
                               ),
                             )),
-                            DataCell(Text(snapshot.data![index].quantita.toString())),
+                            DataCell(Text(snapshot.data![index].quantita.toString(),style: const TextStyle(fontSize: 20))),
                             DataCell(Center(
                               child: Icon(
                                 Icons.circle,

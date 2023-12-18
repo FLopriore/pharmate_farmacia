@@ -40,6 +40,7 @@ class WarehousePage extends StatelessWidget {
                       backgroundColor: const Color(0xff023D74),
                       foregroundColor: Colors.white,
                       fixedSize: const Size.fromHeight(45),
+                      elevation: 5,
                     ),
                     onPressed: () {},
                     icon: const Icon(Icons.search),
@@ -58,6 +59,7 @@ class WarehousePage extends StatelessWidget {
                           backgroundColor: const Color(0xff023D74),
                           foregroundColor: Colors.white,
                           fixedSize: const Size.fromHeight(45),
+                          elevation: 5,
                         ),
                         onPressed: () => showDialog(
                               context: context,

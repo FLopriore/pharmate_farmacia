@@ -44,14 +44,14 @@ class _ProfilePageState extends State<ProfilePage> {
               height: 50,
             ),
             SizedBox(
-              width: 500,
+              width: 700,
               height: 250,
               child: GridView.count(
                 shrinkWrap: true,
                 primary: false,
-                crossAxisSpacing: 30,
+                crossAxisSpacing: 20,
                 mainAxisSpacing: 10,
-                childAspectRatio: 5,
+                childAspectRatio: 7,
                 crossAxisCount: 2,
                 children: <Widget>[
                   const ProfileText(title: 'Nome: ', textAlign: TextAlign.end),

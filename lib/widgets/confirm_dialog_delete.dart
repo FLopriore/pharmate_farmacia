@@ -16,17 +16,19 @@ class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
     return AlertDialog(
       title: const Text(
         "Elimina Account",
-        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+        style: TextStyle(fontWeight: FontWeight.w800, fontSize: 40),
       ),
       content: const Text(
           "Sei sicuro di voler cancellare il tuo account Pharmate?\nL'operazione è irreversibile.",
-          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15)),
+          style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
       actions: [
         TextButton(
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xff023D74),
             foregroundColor: Colors.white,
-            fixedSize: const Size.fromWidth(100),
+            fixedSize: const Size.fromWidth(150),
+            elevation: 5
+
           ),
           onPressed: () {
             _deleteUser();
@@ -34,7 +36,7 @@ class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
                 MaterialPageRoute(builder: (context) => const LoginPage()),
                 (Route<dynamic> route) => false);
           },
-          child: const Text("Conferma"),
+          child: const Text("Conferma",style: TextStyle(fontSize: 20)),
         ),
         TextButton(
           onPressed: () {
@@ -43,9 +45,10 @@ class _DialogConfirmDeleteState extends State<DialogConfirmDelete> {
           style: TextButton.styleFrom(
             backgroundColor: const Color(0xffCAE6FF),
             foregroundColor: const Color(0xff023D74),
-            fixedSize: const Size.fromWidth(100),
+            fixedSize: const Size.fromWidth(150),
+            elevation: 5
           ),
-          child: const Text("Annulla"),
+          child: const Text("Annulla",style: TextStyle(fontSize: 20)),
         ),
       ],
     );

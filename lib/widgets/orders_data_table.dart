@@ -37,31 +37,31 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                   columns: const [
                     DataColumn(
                       label: Text("ID ordine",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                       numeric: true,
                     ),
                     DataColumn(
                       label: Text("Data",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                       numeric: true,
                     ),
                     DataColumn(
                         label: Text("Codice AIC",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                     DataColumn(
                         label: Text("Prodotto",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                     DataColumn(
                       label: Text("Qtà",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                       numeric: true,
                     ),
                     DataColumn(
                         label: Text("Stato",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                     DataColumn(
                         label: Text("Azione",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20))),
                   ],
                   rows: List<DataRow>.generate(
                       snapshot.data!.length,
@@ -71,15 +71,15 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
                               child: Text(
                                 snapshot.data![index].uuid,
                                 overflow: TextOverflow.ellipsis,
-                              ),
+                              style: const TextStyle(fontSize: 20)),
                             )),
                             DataCell(Text(formatter.format(
-                                DateTime.parse(snapshot.data![index].date)))),
+                                DateTime.parse(snapshot.data![index].date)),style: const TextStyle(fontSize: 20),)),
                             DataCell(Text(
-                                snapshot.data![index].prodotto.codice_aic)),
-                            DataCell(Text(snapshot.data![index].prodotto.nome)),
+                                snapshot.data![index].prodotto.codice_aic,style: const TextStyle(fontSize: 20))),
+                            DataCell(Text(snapshot.data![index].prodotto.nome,style: const TextStyle(fontSize: 20))),
                             DataCell(Text(
-                                snapshot.data![index].quantita.toString())),
+                                snapshot.data![index].quantita.toString(),style: const TextStyle(fontSize: 20))),
                             DataCell(Center(
                               child: Icon(
                                 Icons.circle,
@@ -130,7 +130,7 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
           onPressed: () {
             _acceptOrder(uuid);
           },
-          child: const Text("Accetta"),
+          child: const Text("Accetta",style: const TextStyle(fontSize: 20)),
         );
       case Status.ACCEPTED:
         return OutlinedButton(
@@ -145,10 +145,10 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
           onPressed: () {
             _deliverOrder(uuid);
           },
-          child: const Text("Vendi"),
+          child: const Text("Vendi",style: const TextStyle(fontSize: 20)),
         );
       case Status.DELIVERED:
-        return const Text("Ordine completato");
+        return const Text("Ordine completato",style: const TextStyle(fontSize: 20));
     }
   }
 
