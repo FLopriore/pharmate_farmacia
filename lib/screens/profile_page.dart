@@ -94,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         } else {
                           return const Text("");
                         }
-                      }), // TODO: add data from DB
+                      }),
                 ],
               ),
             ),

@@ -66,7 +66,7 @@ class _ChangePassState extends State<ChangePass> {
             fixedSize: const Size.fromHeight(55),
           ),
           child: const Text("Cambia Password"),
-        ), //TODO: Add to db the drugs
+        ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);

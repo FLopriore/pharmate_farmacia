@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/screens/history_page.dart';
+import 'package:pharmate_farmacia/screens/orders_page.dart';
 import 'package:pharmate_farmacia/screens/profile_page.dart';
 import 'package:pharmate_farmacia/screens/warehouse_page.dart';
 import 'package:pharmate_farmacia/widgets/custom_icon.dart';
-import 'package:pharmate_farmacia/screens/orders_page.dart';
 
 class NavRail extends StatefulWidget {
   const NavRail({super.key});
@@ -37,7 +37,7 @@ class _NavRailState extends State<NavRail> {
             selectedLabelTextStyle: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black,
-            ), //TODO: Change Font
+            ),
             unselectedLabelTextStyle: const TextStyle(
                 fontWeight: FontWeight.normal, color: Colors.black),
             labelType: NavigationRailLabelType.all,
