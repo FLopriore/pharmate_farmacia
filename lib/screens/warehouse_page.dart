@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmate_farmacia/providers/warehouse_provider.dart';
 import 'package:pharmate_farmacia/widgets/add_stock.dart';
-import 'package:pharmate_farmacia/widgets/custom_search_bar.dart';
 import 'package:pharmate_farmacia/widgets/rounded_background_rectangle.dart';
 import 'package:pharmate_farmacia/widgets/warehouse_items_data_table.dart';
 import 'package:provider/provider.dart';
@@ -26,31 +25,8 @@ class WarehousePage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Expanded(
-                child: SizedBox(
-                  height: 50,
-                  child: CustomSearchBar(),
-                ),
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff023D74),
-                      foregroundColor: Colors.white,
-                      fixedSize: const Size.fromHeight(45),
-                      elevation: 5,
-                    ),
-                    onPressed: () {},
-                    icon: const Icon(Icons.search),
-                    label: const Text(
-                      "Cerca ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal, fontSize: 15),
-                    )),
-              ), //TODO: Filter the drugs using a query
-              const SizedBox(width: 10),
               Directionality(
                 textDirection: TextDirection.rtl,
                 child: Consumer<Warehouse>(
@@ -61,10 +37,10 @@ class WarehousePage extends StatelessWidget {
                           fixedSize: const Size.fromHeight(45),
                           elevation: 5,
                         ),
-                        onPressed: () => showDialog(
+                            onPressed: () => showDialog(
                               context: context,
                               builder: (BuildContext context) =>
-                                  ChangeNotifierProvider<Warehouse>.value(
+                              ChangeNotifierProvider<Warehouse>.value(
                                 value: warehouse,
                                 child: const DialogAddStock(),
                               ),
@@ -76,7 +52,7 @@ class WarehousePage extends StatelessWidget {
                               fontWeight: FontWeight.normal, fontSize: 15),
                         ))),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 30),
             ],
           ),
           const Expanded(
