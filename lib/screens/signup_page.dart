@@ -75,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     if (success) {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const PharmaRegistrationPage()));
-                    } // TODO: add dialog to show signup error
+                    }
                   });
                 },
                 icon: const Icon(Icons.navigate_next),

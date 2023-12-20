@@ -42,8 +42,8 @@ class _PharmaRegistrationPageState extends State<PharmaRegistrationPage> {
             const SizedBox(height: 20),
             const LoginText(text: "Nome farmacia"),
             RoundedTextField(
-                controller: nameController,
-                hintText: "Es. Farmacia San Nicola",
+              controller: nameController,
+              hintText: "Es. Farmacia San Nicola",
             ),
             const LoginText(text: "Città"),
             RoundedTextField(
@@ -64,21 +64,27 @@ class _PharmaRegistrationPageState extends State<PharmaRegistrationPage> {
                 ),
                 onPressed: () async {
                   await Authorization()
-                      .createPharmacy(nameController.text,cityController.text,
-                          codeController.text,)
+                      .createPharmacy(
+                    nameController.text,
+                    cityController.text,
+                    codeController.text,
+                  )
                       .then((bool success) {
                     if (success) {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const NavRail()));
-                    } else{
+                    } else {
                       showDialog(
-                      context: context,
-                      builder: (BuildContext context) => const DialogErrorLogin());
+                          context: context,
+                          builder: (BuildContext context) =>
+                              const DialogErrorLogin());
                     }
                   });
                 },
                 icon: const Icon(Icons.navigate_next),
-                label: const Text("Entra",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
+                label: const Text("Entra",
+                    style:
+                        TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
               ),
             ),
           ],

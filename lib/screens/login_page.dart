@@ -115,7 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                   icon: const Icon(Icons.login),
-                  label: const Text("Entra",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
+                  label: const Text("Entra",
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal, fontSize: 20)),
                 ),
               ),
               const SizedBox(height: 80),
@@ -135,7 +137,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const SignUpPage())),
-                child: const Text("Registra la tua Farmacia",style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
+                child: const Text("Registra la tua Farmacia",
+                    style:
+                        TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
               ),
             ],
           ),
