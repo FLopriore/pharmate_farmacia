@@ -189,22 +189,16 @@ class _OrdersDataTableState extends State<OrdersDataTable> {
   }
 
   Future<void> _acceptOrder(String uuid) async {
-    var response = await CallApi().putData('ordine/accept?uuid=$uuid');
-    // TODO: check response == true
-    //if (response) {
+    await CallApi().putData('ordine/accept?uuid=$uuid');
     setState(() {
       myOrdersList = getMyOrders();
     });
-    //}
   }
 
   Future<void> _deliverOrder(String uuid) async {
-    var response = await CallApi().putData('ordine/sell?uuid=$uuid');
-    // TODO: check response == true
-    //if (response) {
+    await CallApi().putData('ordine/sell?uuid=$uuid');
     setState(() {
       myOrdersList = getMyOrders();
     });
-    //}
   }
 }

@@ -119,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     style:
                         TextStyle(fontWeight: FontWeight.normal, fontSize: 20),
                   )),
-            ), //TODO: Change Password PopUp
+            ),
             const SizedBox(
               height: 10,
             ),
