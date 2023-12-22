@@ -50,10 +50,10 @@ class _PharmaRegistrationPageState extends State<PharmaRegistrationPage> {
               controller: cityController,
               hintText: "Es. Bari",
             ),
-            const LoginText(text: "Codice"),
+            const LoginText(text: "Codice ministeriale"),
             RoundedTextField(
               controller: codeController,
-              hintText: 'Inserisci il codice a 11 caratteri della farmacia',
+              hintText: 'Inserisci il codice di 5 cifre della farmacia',
             ),
             const SizedBox(height: 16),
             Center(
