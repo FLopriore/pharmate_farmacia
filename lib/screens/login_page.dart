@@ -22,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
+          padding: const EdgeInsetsDirectional.symmetric(horizontal: 150),
           child: Column(
             children: [
               const ExcludeSemantics(
@@ -47,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 label: "Inserisci ",
                 textField: false,
                 child: TextField(
+                  maxLength: 16,
                     onTap: () {
                       setState(() {
                         _isVisible = false;
@@ -59,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.all(Radius.circular(40))),
                       labelText: 'Codice Fiscale',
+                      counterText: "",
                     )),
               ),
               const ExcludeSemantics(
@@ -80,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.all(Radius.circular(40))),
                       labelText: 'Password',
+                      counterText: "",
                     )),
               ),
               const SizedBox(height: 20),
