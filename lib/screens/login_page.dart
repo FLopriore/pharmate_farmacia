@@ -39,56 +39,45 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const ExcludeSemantics(
-                child: SizedBox(height: 50),
-              ),
-              Semantics(
-                label: "Inserisci ",
-                textField: false,
-                child: TextField(
+              const SizedBox(height: 50),
+              TextField(
                   maxLength: 16,
-                    onTap: () {
-                      setState(() {
-                        _isVisible = false;
-                      });
-                    },
-                    controller: cfController,
-                    decoration: const InputDecoration(
-                      filled: true,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                      labelText: 'Codice Fiscale',
-                      counterText: "",
-                    )),
-              ),
-              const ExcludeSemantics(
-                child: SizedBox(height: 16),
-              ),
-              Semantics(
-                label: "Inserisci",
-                child: TextField(
-                    onTap: () {
-                      setState(() {
-                        _isVisible = false;
-                      });
-                    },
-                    controller: passwordController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      filled: true,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                      labelText: 'Password',
-                      counterText: "",
-                    )),
-              ),
+                  onTap: () {
+                    setState(() {
+                      _isVisible = false;
+                    });
+                  },
+                  controller: cfController,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                    labelText: 'Codice Fiscale',
+                    counterText: "",
+                  )),
+              const SizedBox(height: 16),
+              TextField(
+                  onTap: () {
+                    setState(() {
+                      _isVisible = false;
+                    });
+                  },
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                    labelText: 'Password',
+                    counterText: "",
+                  )),
               const SizedBox(height: 20),
               Visibility(
                 visible: _isVisible,
                 child: const Text(
-                  'Codice Fiscale o Password errata',
+                  'Codice Fiscale o Password errati',
                   style: TextStyle(
                     color: Color(0xff023D74),
                     fontWeight: FontWeight.bold,
