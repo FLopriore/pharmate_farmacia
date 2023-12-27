@@ -25,9 +25,7 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 150),
           child: Column(
             children: [
-              const ExcludeSemantics(
-                child: SizedBox(height: 100),
-              ),
+              const SizedBox(height: 100),
               const Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -86,18 +84,49 @@ class _LoginPageState extends State<LoginPage> {
                       counterText: "",
                     )),
               ),
+              const SizedBox(height: 50),
+              TextField(
+                  onTap: () {
+                    setState(() {
+                      _isVisible = false;
+                    });
+                  },
+                  controller: cfController,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                    labelText: 'Codice Fiscale',
+                  )),
+              const SizedBox(height: 16),
+              TextField(
+                  onTap: () {
+                    setState(() {
+                      _isVisible = false;
+                    });
+                  },
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                    labelText: 'Password',
+                  )),
               const SizedBox(height: 20),
               Visibility(
                 visible: _isVisible,
                 child: const Text(
-                  'Email o Password errata',
+                  'Codice Fiscale o Password errata',
                   style: TextStyle(
-                      color: Color(0xff023D74), fontWeight: FontWeight.bold),
+                    color: Color(0xff023D74),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
@@ -125,13 +154,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 80),
-              const ExcludeSemantics(
-                child: Text(
-                  "Primo accesso?",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
+              const Text(
+                "Primo accesso?",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
                 ),
               ),
               ElevatedButton(
