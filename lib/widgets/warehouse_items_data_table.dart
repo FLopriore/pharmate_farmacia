@@ -14,33 +14,37 @@ class _WarehouseItemsDataTableState extends State<WarehouseItemsDataTable> {
   @override
   Widget build(BuildContext context) {
     return Consumer<Warehouse>(
-      builder: (context, warehouse, child) => DataTable(
-          sortColumnIndex: 0,
-          sortAscending: true,
-          columns: const [
-            DataColumn(
-              label: Text("Codice AIC",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              numeric: true,
-            ),
-            DataColumn(
-                label: Text("Nome",
-                    style: TextStyle(fontWeight: FontWeight.bold))),
-            DataColumn(
-              label: Text("Qtà", style: TextStyle(fontWeight: FontWeight.bold)),
-              numeric: true,
-            ),
-          ],
-          rows: List<DataRow>.generate(
-              warehouse.listItemsWarehouse.length,
-              (int index) => DataRow(cells: <DataCell>[
-                    DataCell(Text(warehouse
-                        .listItemsWarehouse[index].prodotto.codice_aic)),
-                    DataCell(Text(
-                        warehouse.listItemsWarehouse[index].prodotto.nome)),
-                    DataCell(Text(warehouse.listItemsWarehouse[index].quantita
-                        .toString())),
-                  ]))),
+      builder: (context, warehouse, child) => SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: DataTable(
+            sortColumnIndex: 0,
+            sortAscending: true,
+            columns: const [
+              DataColumn(
+                label: Text("Codice AIC",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                numeric: true,
+              ),
+              DataColumn(
+                  label: Text("Nome",
+                      style: TextStyle(fontWeight: FontWeight.bold))),
+              DataColumn(
+                label:
+                    Text("Qtà", style: TextStyle(fontWeight: FontWeight.bold)),
+                numeric: true,
+              ),
+            ],
+            rows: List<DataRow>.generate(
+                warehouse.listItemsWarehouse.length,
+                (int index) => DataRow(cells: <DataCell>[
+                      DataCell(Text(warehouse
+                          .listItemsWarehouse[index].prodotto.codice_aic)),
+                      DataCell(Text(
+                          warehouse.listItemsWarehouse[index].prodotto.nome)),
+                      DataCell(Text(warehouse.listItemsWarehouse[index].quantita
+                          .toString())),
+                    ]))),
+      ),
     );
   }
 }
