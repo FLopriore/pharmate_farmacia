@@ -84,37 +84,6 @@ class _LoginPageState extends State<LoginPage> {
                       counterText: "",
                     )),
               ),
-              const SizedBox(height: 50),
-              TextField(
-                  onTap: () {
-                    setState(() {
-                      _isVisible = false;
-                    });
-                  },
-                  controller: cfController,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(40))),
-                    labelText: 'Codice Fiscale',
-                  )),
-              const SizedBox(height: 16),
-              TextField(
-                  onTap: () {
-                    setState(() {
-                      _isVisible = false;
-                    });
-                  },
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(40))),
-                    labelText: 'Password',
-                  )),
               const SizedBox(height: 20),
               Visibility(
                 visible: _isVisible,
