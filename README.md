@@ -1,16 +1,15 @@
 # pharmate_farmacia
 
-A new Flutter project.
+Desktop app used by pharmacies to accept orders coming from users.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+In this repository, there is the source code of the application for desktop.  
+If you are interested in the smartphone app used by users to place orders, see [Pharmate](https://github.com/FLopriore/pharmate).
 
-A few resources to get you started if this is your first Flutter project:
+## Contributors
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This is a group project for "Software Engineering" course at [Politecnico di Bari](www.poliba.it).  
+Front-end is developed by [Federico Lopriore](https://github.com/FLopriore) and [Francesco Desiderato](https://github.com/FrancescoDesiderato).
+Back-end is developed by [Fedele Cavaliere](https://github.com/feddynventor).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
