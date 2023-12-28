@@ -120,7 +120,6 @@
 				5EB36C16FA9F03187E50CD17 /* Pods-RunnerTests.release.xcconfig */,
 				3F83D0C56A2FBD2E925D0552 /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -478,7 +477,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pharmateFarmacia.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fff.pharmateFarmacia.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pharmate_farmacia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pharmate_farmacia";
@@ -493,7 +492,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pharmateFarmacia.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fff.pharmateFarmacia.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pharmate_farmacia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pharmate_farmacia";
@@ -508,7 +507,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.pharmateFarmacia.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fff.pharmateFarmacia.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pharmate_farmacia.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pharmate_farmacia";
